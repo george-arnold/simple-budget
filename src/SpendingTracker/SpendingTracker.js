@@ -5,7 +5,8 @@ class SpendingTracker extends Component {
   render() {
     return (
       <main className="SpendingTracker">
-        <form>{/* SpendingTracker */}</form>
+        <h2>Your Spending</h2>
+        <p>This is where your spending will be displayed</p>
       </main>
     );
   }

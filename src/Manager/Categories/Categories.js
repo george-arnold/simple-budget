@@ -5,7 +5,8 @@ class Categories extends Component {
   render() {
     return (
       <main className="Categories">
-        <p>Category Name</p>
+        <p>Category1</p>
+        <p>Category2</p>
         <button>Add Category</button>
       </main>
     );
