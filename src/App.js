@@ -1,12 +1,18 @@
 import React, { Component } from "react";
+import Navigation from "./Navigation/Navigation";
+import Manager from "./Manager/Manager";
+import AddTransaction from "./AddTransaction/AddTransaction";
+
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <main className="App">
+        <Navigation />
         <Manager />
-        <SpendingTracker />
+        <AddTransaction />
+        {/* <SpendingTracker /> */}
       </main>
     );
   }
