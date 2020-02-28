@@ -46,6 +46,7 @@ class App extends Component {
       ]
     };
   }
+  
   addTransaction = transaction => {
     this.setState({
       transactons: [...this.state.transactions,transaction]

@@ -11,21 +11,24 @@ class AddTransaction extends Component {
         venue: "",
         amount: "",
         comments: "",
-        categoryid: 1
+        categoryid: ""
     }
-
     this.handleVenueChange = this.handleVenueChange.bind(this);
     this.handleAmountChange = this.handleAmountChange.bind(this);
-
+    this.handleCommentChange = this.handleCommentChange.bind(this);
+    this.handleCategoryChange = this.handleCategoryChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit = event => {
     event.preventDefault();
     const transaction = {
       venue: this.state.venue,
+      amount: this.state.amount,
+      comments: this.state.comments,
+      categoryid: this.state.categoryid
     };
-
-    // this.context.addTransaction(transaction);
+    this.context.addTransaction(transaction);
     // do-later POST new Transaction
   };
 
@@ -36,7 +39,17 @@ class AddTransaction extends Component {
   }
   handleAmountChange (event) {
     this.setState({
-      venue: event.target.value
+      amount: event.target.value
+    })
+  }
+  handleCommentChange (event) {
+    this.setState({
+      comments: event.target.value
+    })
+  }
+  handleCategoryChange (event) {
+    this.setState({
+      categoryid: event.target.value
     })
   }
 
@@ -46,9 +59,9 @@ class AddTransaction extends Component {
       <main className="AddTransaction">
         <h2>Transaction Entry</h2>
         <form onSubmit={this.handleSubmit}>
-          <select>
+          <select value = {this.state.categoryid} onChange= {this.handleCategoryChange}>
             {categories.map(category => (
-              <option key={category.id} name={category.id} value={category.id}>
+              <option key={category.id} value={category.id} >
                 {" "}
                 {category.name}
               </option>
@@ -64,7 +77,7 @@ class AddTransaction extends Component {
           </div>
           <div className="TransactionFormSection">
             <label htmlFor="comments">Additional Comments</label>
-            <textarea id="comments" name="comments"></textarea>
+            <textarea id="comments" name="comments" onChange={this.handleCommentChange}></textarea>
           </div>
           <input type="submit" value="Submit"></input>
         </form>

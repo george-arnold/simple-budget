@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./SpendingTracker.css";
 
 class SpendingTracker extends Component {
+  
   render() {
     return (
       <main className="SpendingTracker">
