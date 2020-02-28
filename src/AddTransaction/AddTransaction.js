@@ -13,11 +13,6 @@ class AddTransaction extends Component {
         comments: "",
         categoryid: ""
     }
-    this.handleVenueChange = this.handleVenueChange.bind(this);
-    this.handleAmountChange = this.handleAmountChange.bind(this);
-    this.handleCommentChange = this.handleCommentChange.bind(this);
-    this.handleCategoryChange = this.handleCategoryChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit = event => {
@@ -32,22 +27,22 @@ class AddTransaction extends Component {
     // do-later POST new Transaction
   };
 
-  handleVenueChange (event) {
+  handleVenueChange =event=> {
     this.setState({
       venue: event.target.value
     })
   }
-  handleAmountChange (event) {
+  handleAmountChange =event=> {
     this.setState({
       amount: event.target.value
     })
   }
-  handleCommentChange (event) {
+  handleCommentChange =event=> {
     this.setState({
       comments: event.target.value
     })
   }
-  handleCategoryChange (event) {
+  handleCategoryChange =event=> {
     this.setState({
       categoryid: event.target.value
     })
