@@ -5,10 +5,14 @@ import BudgetContext from "../BudgetContext";
 class AddTransaction extends Component {
   handleSubmit = event => {
     event.preventDefault();
-  const transaction = {
-    venue: event.target["transaction-venue"].value
+  const transaction = 
+    {
+      venue: event.target["transaction-venue"].value,
+      amount: event.target["transaction-amount"].value,
+      comments: event.target["transaction-comments"].value,
+      categoryid: event.target["transaction-categoryid"].value
+    }
     
-  }
     // do-later POST new Transaction
   };
   static contextType = BudgetContext;
@@ -21,7 +25,7 @@ class AddTransaction extends Component {
         <form onSubmit={this.handleSubmit}>
           <select>
             {categories.map(category => (
-              <option key={category.id} value={category.id}>
+              <option key={category.id} name = {category.id} value={category.id}>
                 {" "}
                 {category.name}
               </option>
@@ -32,8 +36,12 @@ class AddTransaction extends Component {
             <input id="venue" type="text" name= "transaction-venue"></input>
           </div>
           <div className="TransactionFormSection">
-            <label>How much did you spend?</label>
-            <input></input>
+            <label htmlFor="amount">How much did you spend?</label>
+            <input id="amount" type="number" name= "transaction-amount"></input>
+          </div>
+          <div className="TransactionFormSection">
+            <label htmlFor= "comments">Additional Comments</label>
+            <textarea id="comments" name= "transaction-comments"></textarea>
           </div>
           <input type="submit" value="Submit"></input>
         </form>
