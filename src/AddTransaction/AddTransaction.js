@@ -3,19 +3,19 @@ import "./AddTransaction.css";
 import BudgetContext from "../BudgetContext";
 
 class AddTransaction extends Component {
+  static contextType = BudgetContext;
+
   handleSubmit = event => {
     event.preventDefault();
-  const transaction = 
-    {
+    const transaction = {
       venue: event.target["transaction-venue"].value,
       amount: event.target["transaction-amount"].value,
       comments: event.target["transaction-comments"].value,
       categoryid: event.target["transaction-categoryid"].value
-    }
-    
+    };
+    this.context.addTransaction(transaction);
     // do-later POST new Transaction
   };
-  static contextType = BudgetContext;
 
   render() {
     const { categories } = this.context;
@@ -25,7 +25,7 @@ class AddTransaction extends Component {
         <form onSubmit={this.handleSubmit}>
           <select>
             {categories.map(category => (
-              <option key={category.id} name = {category.id} value={category.id}>
+              <option key={category.id} name={category.id} value={category.id}>
                 {" "}
                 {category.name}
               </option>
@@ -33,15 +33,15 @@ class AddTransaction extends Component {
           </select>
           <div className="TransactionFormSection">
             <label htmlFor="venue">Where did you spend?</label>
-            <input id="venue" type="text" name= "transaction-venue"></input>
+            <input id="venue" type="text" name="transaction-venue"></input>
           </div>
           <div className="TransactionFormSection">
             <label htmlFor="amount">How much did you spend?</label>
-            <input id="amount" type="number" name= "transaction-amount"></input>
+            <input id="amount" type="number" name="transaction-amount"></input>
           </div>
           <div className="TransactionFormSection">
-            <label htmlFor= "comments">Additional Comments</label>
-            <textarea id="comments" name= "transaction-comments"></textarea>
+            <label htmlFor="comments">Additional Comments</label>
+            <textarea id="comments" name="transaction-comments"></textarea>
           </div>
           <input type="submit" value="Submit"></input>
         </form>

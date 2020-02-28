@@ -46,11 +46,11 @@ class App extends Component {
       ]
     };
   }
-  // createTransaction = transaction => {
-  //   this.setState({
-  //     transactons: []
-  //   });
-  // };
+  addTransaction = transaction => {
+    this.setState({
+      transactons: [...this.state.transactions,transaction]
+    });
+  };
 
   render() {
     const value = {
