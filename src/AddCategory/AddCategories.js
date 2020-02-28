@@ -8,13 +8,23 @@ class AddCategories extends Component {
         name: ""
     }
   }
+  handleNameChange =event => {
+    this.setState({
+      name: event.target.value
+    })
+  }
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submitted");
+  }
+
+
   render() {
     return (
-      <form>
+      <form onSubmit= {this.handleSubmit}>
         <h2>New Categories</h2>
         <label>Category Name</label>
-        <input type="text"></input>
-
+        <input type="text" onChange={this.handleNameChange}></input>
         <input type = "submit" value= "submit" ></input>
       </form>
     );
