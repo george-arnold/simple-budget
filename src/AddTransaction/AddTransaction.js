@@ -1,20 +1,41 @@
 import React, { Component } from "react";
 import "./AddTransaction.css";
+import BudgetContext from "../BudgetContext";
 
 class AddTransaction extends Component {
+  handleSubmit = event => {
+    event.preventDefault();
+  const transaction = {
+    venue: event.target["transaction-venue"].value
+    
+  }
+    // do-later POST new Transaction
+  };
+  static contextType = BudgetContext;
+
   render() {
+    const { categories } = this.context;
     return (
       <main className="AddTransaction">
         <h2>Transaction Entry</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <select>
-            <option>Category 1</option>
-            <option>Category 2</option>
+            {categories.map(category => (
+              <option key={category.id} value={category.id}>
+                {" "}
+                {category.name}
+              </option>
+            ))}
           </select>
-          <label>How much did you spend?</label>
-          <input type="number"></input>
-          <label>Where did you spend it?</label>
-          <input></input>
+          <div className="TransactionFormSection">
+            <label htmlFor="venue">Where did you spend?</label>
+            <input id="venue" type="text" name= "transaction-venue"></input>
+          </div>
+          <div className="TransactionFormSection">
+            <label>How much did you spend?</label>
+            <input></input>
+          </div>
+          <input type="submit" value="Submit"></input>
         </form>
       </main>
     );

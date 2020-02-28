@@ -14,11 +14,11 @@ class App extends Component {
       categories: [
         {
           name: "Restaurants",
-          categoryid: 1
+          id: 1
         },
         {
           name: "Monthly Bills",
-          categoryid: 2
+          id: 2
         }
       ],
       transactions: [
@@ -33,8 +33,15 @@ class App extends Component {
           id: 2,
           venue: "Shell",
           amount: 33.12,
-          comments: "Weekly grocery trip",
+          comments: "gas",
           categoryid: 1
+        },
+        {
+          id: 3,
+          venue: "Chipotle",
+          amount: 10.12,
+          comments: "food",
+          categoryid: 2
         }
       ]
     };
