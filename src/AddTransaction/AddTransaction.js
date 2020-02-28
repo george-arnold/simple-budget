@@ -5,18 +5,40 @@ import BudgetContext from "../BudgetContext";
 class AddTransaction extends Component {
   static contextType = BudgetContext;
 
+  constructor(props){
+    super(props);
+    this.state ={ 
+        venue: "",
+        amount: "",
+        comments: "",
+        categoryid: 1
+    }
+
+    this.handleVenueChange = this.handleVenueChange.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
+
+  }
+
   handleSubmit = event => {
     event.preventDefault();
     const transaction = {
-      venue: event.target["transaction-venue"].value,
-      amount: event.target["transaction-amount"].value,
-      comments: event.target["transaction-comments"].value,
-      categoryid: event.target["transaction-categoryid"].value
+      venue: this.state.venue,
     };
-    
-    this.context.addTransaction(transaction);
+
+    // this.context.addTransaction(transaction);
     // do-later POST new Transaction
   };
+
+  handleVenueChange (event) {
+    this.setState({
+      venue: event.target.value
+    })
+  }
+  handleAmountChange (event) {
+    this.setState({
+      venue: event.target.value
+    })
+  }
 
   render() {
     const { categories } = this.context;
@@ -34,15 +56,15 @@ class AddTransaction extends Component {
           </select>
           <div className="TransactionFormSection">
             <label htmlFor="venue">Where did you spend?</label>
-            <input id="venue" type="text" name="transaction-venue"></input>
+            <input id="venue" type="text" name="venue" onChange={this.handleVenueChange}></input>
           </div>
           <div className="TransactionFormSection">
             <label htmlFor="amount">How much did you spend?</label>
-            <input id="amount" type="number" name="transaction-amount"></input>
+            <input id="amount" type="number" name="amount" onChange={this.handleAmountChange}></input>
           </div>
           <div className="TransactionFormSection">
             <label htmlFor="comments">Additional Comments</label>
-            <textarea id="comments" name="transaction-comments"></textarea>
+            <textarea id="comments" name="comments"></textarea>
           </div>
           <input type="submit" value="Submit"></input>
         </form>
