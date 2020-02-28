@@ -46,7 +46,7 @@ class App extends Component {
       ]
     };
   }
-  
+
   addTransaction = transaction => {
     this.setState({
       transactons: [...this.state.transactions,transaction]
@@ -62,6 +62,7 @@ class App extends Component {
       <BudgetContext.Provider value={value}>
         <main className="App">
           <Navigation />
+          <h1>Simple Budget</h1>
           <Manager />
           <AddTransaction />
           <SpendingTracker />
