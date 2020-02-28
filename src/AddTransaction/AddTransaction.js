@@ -13,6 +13,7 @@ class AddTransaction extends Component {
       comments: event.target["transaction-comments"].value,
       categoryid: event.target["transaction-categoryid"].value
     };
+    
     this.context.addTransaction(transaction);
     // do-later POST new Transaction
   };
