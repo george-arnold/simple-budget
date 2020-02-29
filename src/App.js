@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Navigation from "./Navigation/Navigation";
-import Manager from "./Manager/Manager";
 import AddTransaction from "./AddTransaction/AddTransaction";
 import SpendingTracker from "./SpendingTracker/SpendingTracker";
 import BudgetContext from "./BudgetContext";
 
 import "./App.css";
+import AddCategories from "./AddCategory/AddCategories";
 
 class App extends Component {
   constructor(props) {
@@ -76,8 +76,8 @@ class App extends Component {
         <main className="App">
           <Navigation />
           <h1>Simple Budget</h1>
-          <Manager />
           <AddTransaction />
+          <AddCategories />
           <SpendingTracker />
         </main>
       </BudgetContext.Provider>
