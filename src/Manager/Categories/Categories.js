@@ -18,6 +18,7 @@ class Categories extends Component {
 
   render() {
     const { categories = [], transactions = [] } = this.context;
+    console.log(transactions, "in categories");
     return (
       <main className="Categories">
         <ul>

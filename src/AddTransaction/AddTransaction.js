@@ -33,7 +33,7 @@ class AddTransaction extends Component {
   }
   handleAmountChange =event=> {
     this.setState({
-      amount: event.target.value
+      amount: Number(event.target.value)
     })
   }
   handleCommentChange =event=> {
@@ -43,7 +43,7 @@ class AddTransaction extends Component {
   }
   handleCategoryChange =event=> {
     this.setState({
-      categoryId: event.target.value
+      categoryId: Number(event.target.value)
     })
   }
 

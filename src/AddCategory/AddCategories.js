@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./AddCategories.css";
+import BudgetContext from '../BudgetContext';
 
 class AddCategories extends Component {
+  static contextType= BudgetContext;
   constructor(props){
     super(props);
     this.state ={ 
@@ -15,7 +17,10 @@ class AddCategories extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submitted");
+    const category = {
+      name: this.state.name,
+    };
+    this.context.addCategory(category)
   }
 
 

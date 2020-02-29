@@ -54,11 +54,18 @@ class App extends Component {
     });
   };
 
+  addCategory = category => {
+    this.setState({
+      categories: [...this.state.categories,category]
+    });
+  };
+
   render() {
     const value = {
       categories: this.state.categories,
       transactions: this.state.transactions,
       addTransaction: this.addTransaction,
+      addCategory: this.addCategory,
       totalCost: this.state.transactions.map(transaction=>
         transaction.amount).reduce((a,b) => a + b, 0)
     };
