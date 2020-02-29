@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./AddCategories.css";
 import BudgetContext from '../BudgetContext';
+import uniqid from 'uniqid';
 
 class AddCategories extends Component {
   static contextType= BudgetContext;
@@ -19,6 +20,7 @@ class AddCategories extends Component {
     event.preventDefault();
     const category = {
       name: this.state.name,
+      id: uniqid()
     };
     this.context.addCategory(category)
   }

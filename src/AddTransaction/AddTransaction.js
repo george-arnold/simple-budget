@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./AddTransaction.css";
 import BudgetContext from "../BudgetContext";
+import uniqid from "uniqid";
+
 
 class AddTransaction extends Component {
   static contextType = BudgetContext;
@@ -18,6 +20,7 @@ class AddTransaction extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const transaction = {
+      id:  uniqid(),
       venue: this.state.venue,
       amount: this.state.amount,
       comments: this.state.comments,
@@ -43,7 +46,7 @@ class AddTransaction extends Component {
   }
   handleCategoryChange =event=> {
     this.setState({
-      categoryId: Number(event.target.value)
+      categoryId: (event.target.value)
     })
   }
 

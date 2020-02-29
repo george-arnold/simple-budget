@@ -29,8 +29,8 @@ class Categories extends Component {
                 {transactions
                   .filter(
                     transaction =>
-                      transaction.categoryId === this.state.categoryId &&
-                      transaction.categoryId === category.id
+                      transaction.categoryId == this.state.categoryId &&
+                      transaction.categoryId == category.id
                   )
                   .map(transaction => (
                     <li key={transaction.id}>{transaction.venue}</li>
