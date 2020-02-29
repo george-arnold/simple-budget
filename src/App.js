@@ -47,6 +47,7 @@ class App extends Component {
     };
   }
 
+
   addTransaction = transaction => {
     this.setState({
       transactions: [...this.state.transactions,transaction]
@@ -57,8 +58,12 @@ class App extends Component {
     const value = {
       categories: this.state.categories,
       transactions: this.state.transactions,
-      addTransaction: this.addTransaction
+      addTransaction: this.addTransaction,
+      totalCost: this.state.transactions.map(transaction=>
+        transaction.amount).reduce((a,b) => a + b, 0)
     };
+    console.log(value);
+
     return (
       <BudgetContext.Provider value={value}>
         <main className="App">

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import "./SpendingTracker.css";
+import BudgetContext from "../BudgetContext";
 
 class SpendingTracker extends Component {
-  
+  static contextType = BudgetContext;
   render() {
     return (
       <main className="SpendingTracker">
         <h2>Your Spending</h2>
-        <p>This is where your spending will be displayed</p>
+        <p>Total Amount Spent></p>
+        <h3>{this.context.totalCost}</h3>
       </main>
     );
   }
