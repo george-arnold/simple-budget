@@ -1,26 +1,25 @@
-import React, { Component } from "react";
-import "./AddTransaction.css";
-import BudgetContext from "../BudgetContext";
-import uniqid from "uniqid";
-
+import React, { Component } from 'react';
+import './AddTransaction.css';
+import BudgetContext from '../BudgetContext';
+import uniqid from 'uniqid';
 
 class AddTransaction extends Component {
   static contextType = BudgetContext;
 
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state ={ 
-        venue: "", 
-        amount: "",
-        comments: "",
-        categoryId: ""
-    }
+    this.state = {
+      venue: '',
+      amount: '',
+      comments: '',
+      categoryId: ''
+    };
   }
 
   handleSubmit = event => {
     event.preventDefault();
     const transaction = {
-      id:  uniqid(),
+      id: uniqid(),
       venue: this.state.venue,
       amount: this.state.amount,
       comments: this.state.comments,
@@ -29,26 +28,26 @@ class AddTransaction extends Component {
     this.context.addTransaction(transaction);
   };
 
-  handleVenueChange =event=> {
+  handleVenueChange = event => {
     this.setState({
       venue: event.target.value
-    })
-  }
-  handleAmountChange =event=> {
+    });
+  };
+  handleAmountChange = event => {
     this.setState({
       amount: Number(event.target.value)
-    })
-  }
-  handleCommentChange =event=> {
+    });
+  };
+  handleCommentChange = event => {
     this.setState({
       comments: event.target.value
-    })
-  }
-  handleCategoryChange =event=> {
+    });
+  };
+  handleCategoryChange = event => {
     this.setState({
-      categoryId: (event.target.value)
-    })
-  }
+      categoryId: event.target.value
+    });
+  };
 
   render() {
     const { categories } = this.context;
@@ -56,10 +55,10 @@ class AddTransaction extends Component {
       <main className="AddTransaction">
         <h2>Transaction Entry</h2>
         <form onSubmit={this.handleSubmit}>
-          <select value = {this.state.categoryId} onChange= {this.handleCategoryChange}>
+          <select value={this.state.categoryId} onChange={this.handleCategoryChange}>
             {categories.map(category => (
-              <option key={category.id} value={category.id} >
-                {" "}
+              <option key={category.id} value={category.id}>
+                {' '}
                 {category.name}
               </option>
             ))}

@@ -5,17 +5,17 @@
 }
 
 .CategoriesList {
-    list-style: none;
+  list-style: none;
 }
 
 .CategoriesListItem {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   margin: 5px;
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
   font-size: 18px;
-  width: 30%
+  width: 30%;
 }
 
 .TransactionList {
