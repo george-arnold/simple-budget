@@ -27,21 +27,21 @@ class App extends Component {
           venue: "Safeway",
           amount: 123.22,
           comments: "Weekly grocery trip",
-          categoryid: 1
+          categoryId: 1
         },
         {
           id: 2,
           venue: "Shell",
           amount: 33.12,
           comments: "gas",
-          categoryid: 1
+          categoryId: 1
         },
         {
           id: 3,
           venue: "Chipotle",
           amount: 10.12,
           comments: "food",
-          categoryid: 2
+          categoryId: 2
         }
       ]
     };
@@ -49,14 +49,15 @@ class App extends Component {
 
   addTransaction = transaction => {
     this.setState({
-      transactons: [...this.state.transactions,transaction]
+      transactions: [...this.state.transactions,transaction]
     });
   };
 
   render() {
     const value = {
       categories: this.state.categories,
-      transactions: this.state.transactions
+      transactions: this.state.transactions,
+      addTransaction: this.addTransaction
     };
     return (
       <BudgetContext.Provider value={value}>

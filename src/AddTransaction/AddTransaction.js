@@ -8,10 +8,10 @@ class AddTransaction extends Component {
   constructor(props){
     super(props);
     this.state ={ 
-        venue: "",
+        venue: "", 
         amount: "",
         comments: "",
-        categoryid: ""
+        categoryId: ""
     }
   }
 
@@ -21,10 +21,9 @@ class AddTransaction extends Component {
       venue: this.state.venue,
       amount: this.state.amount,
       comments: this.state.comments,
-      categoryid: this.state.categoryid
+      categoryId: this.state.categoryId
     };
     this.context.addTransaction(transaction);
-    // do-later POST new Transaction
   };
 
   handleVenueChange =event=> {
@@ -44,7 +43,7 @@ class AddTransaction extends Component {
   }
   handleCategoryChange =event=> {
     this.setState({
-      categoryid: event.target.value
+      categoryId: event.target.value
     })
   }
 
@@ -54,7 +53,7 @@ class AddTransaction extends Component {
       <main className="AddTransaction">
         <h2>Transaction Entry</h2>
         <form onSubmit={this.handleSubmit}>
-          <select value = {this.state.categoryid} onChange= {this.handleCategoryChange}>
+          <select value = {this.state.categoryId} onChange= {this.handleCategoryChange}>
             {categories.map(category => (
               <option key={category.id} value={category.id} >
                 {" "}
