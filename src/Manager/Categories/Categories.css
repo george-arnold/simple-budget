@@ -3,3 +3,22 @@
   box-shadow: 1em;
   margin: 10px;
 }
+
+.CategoriesList {
+    list-style: none;
+}
+
+.CategoriesListItem {
+  background-color: #4CAF50;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 18px;
+  width: 30%
+}
+
+.TransactionList {
+  background-color: white;
+  font-size: 14px;
+}

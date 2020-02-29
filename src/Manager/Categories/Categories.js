@@ -21,11 +21,11 @@ class Categories extends Component {
     console.log(transactions, "in categories");
     return (
       <main className="Categories">
-        <ul>
+        <ul className="CategoriesList">
           {categories.map(category => (
-            <li key={category.id} onClick={() => this.handleClick(category.id)}>
-              {category.name}
-              <ul>
+            <li className= "CategoriesListItem" key={category.id} onClick={() => this.handleClick(category.id)}>
+              + {category.name}
+              <ul className="TransactionList">
                 {transactions
                   .filter(
                     transaction =>
