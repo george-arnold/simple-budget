@@ -11,9 +11,17 @@ class Categories extends Component {
   static contextType = BudgetContext;
 
   handleClick = categoryId => {
-    this.setState({
-      categoryId
-    });
+    console.log(categoryId);
+    //if categoryId is a string, make it null, if null, make a string
+    if ((categoryId === this.state.categoryId)) {
+      this.setState({
+        categoryId: null,
+      });
+    } else {
+      this.setState({
+        categoryId
+      });
+    }
   };
 
   render() {
@@ -23,7 +31,11 @@ class Categories extends Component {
       <main className="Categories">
         <ul className="CategoriesList">
           {categories.map(category => (
-            <li className= "CategoriesListItem" key={category.id} onClick={() => this.handleClick(category.id)}>
+            <li
+              className="CategoriesListItem"
+              key={category.id}
+              onClick={() => this.handleClick(category.id)}
+            >
               + {category.name}
               <ul className="TransactionList">
                 {transactions
