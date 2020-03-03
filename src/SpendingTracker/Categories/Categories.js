@@ -7,15 +7,15 @@ class Categories extends Component {
   state = {
     categoryId: null
   };
-
+  
   static contextType = BudgetContext;
 
   handleClick = categoryId => {
     console.log(categoryId);
     //if categoryId is a string, make it null, if null, make a string
-    if ((categoryId === this.state.categoryId)) {
+    if (categoryId === this.state.categoryId) {
       this.setState({
-        categoryId: null,
+        categoryId: null
       });
     } else {
       this.setState({
