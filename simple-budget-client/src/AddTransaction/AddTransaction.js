@@ -56,6 +56,7 @@ class AddTransaction extends Component {
         <h2>Transaction Entry</h2>
         <form onSubmit={this.handleSubmit}>
           <select value={this.state.categoryId} onChange={this.handleCategoryChange}>
+            <option>Select a category</option>
             {categories.map(category => (
               <option key={category.id} value={category.id}>
                 {' '}
@@ -65,7 +66,7 @@ class AddTransaction extends Component {
           </select>
           <div className="TransactionFormSection">
             <label htmlFor="venue">Where did you spend?</label>
-            <input id="venue" type="text" name="venue" onChange={this.handleVenueChange}></input>
+            <input maxlength="50" id="venue" type="text" name="venue" onChange={this.handleVenueChange}></input>
           </div>
           <div className="TransactionFormSection">
             <label htmlFor="amount">How much did you spend?</label>

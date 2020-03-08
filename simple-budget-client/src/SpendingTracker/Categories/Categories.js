@@ -7,7 +7,7 @@ class Categories extends Component {
   state = {
     categoryId: null
   };
-  
+
   static contextType = BudgetContext;
 
   handleClick = categoryId => {
@@ -41,7 +41,9 @@ class Categories extends Component {
                 {transactions
                   .filter(
                     transaction =>
+                    // eslint-disable-next-line
                       transaction.categoryId == this.state.categoryId &&
+                      // eslint-disable-next-line
                       transaction.categoryId == category.id
                   )
                   .map(transaction => (
