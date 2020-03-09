@@ -52,8 +52,8 @@ class Categories extends Component {
                     <li key={transaction.id}>{transaction.venue}</li>
                   ))}
               </ul>
-              <DeleteButton/>
             </li>
+            <DeleteButton id={category.id}/>
           </ul>
         ))}
         <AddCategories/>
