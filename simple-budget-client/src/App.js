@@ -44,7 +44,7 @@ class App extends Component {
       })
       .then(([categories, transactions]) => {
         this.setState({ categories, transactions });
-        console.log("state log after Get", this.state);
+      
       })
       .catch(error => {
         console.log(error);
@@ -72,7 +72,7 @@ class App extends Component {
         .map(transaction => transaction.amount)
         .reduce((a, b) => a + b, 0)
     };
-    console.log(value);
+   
 
     return (
       <BudgetContext.Provider value={value}>

@@ -12,7 +12,7 @@ class Categories extends Component {
   static contextType = BudgetContext;
 
   handleClick = categoryId => {
-    console.log(categoryId);
+   
     //if categoryId is a string, make it null, if null, make a string
     if (categoryId === this.state.categoryId) {
       this.setState({
@@ -27,7 +27,6 @@ class Categories extends Component {
 
   render() {
     const { categories = [], transactions = [] } = this.context;
-    console.log(transactions, "in categories");
     return (
       <main className="Categories">
         {categories.map(category => (

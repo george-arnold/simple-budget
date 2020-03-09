@@ -18,17 +18,13 @@ class AddCategories extends Component {
     });
   };
 
-  clearForm = () =>{
-    this.setState( {
-      name:""
-    })
-  }
-   //push the category names to the database and refresh the page
   handleSubmit = event => {
+    event.preventDefault();
     const category = {
       name: this.state.name,
     };
     if(category.name.length >0 ) {
+      // post category to api
       fetch(`${config.API_ENDPOINT}/categories`, {
         method: "POST",
         headers: {
@@ -39,6 +35,16 @@ class AddCategories extends Component {
         body: JSON.stringify(category)
       })
       .then(res => {
+        // if successful 
+        if (res.ok) {
+          // add category to state in app
+        this.context.addCategory(category);
+        }
+          // clear form
+
+        // else 
+
+          // return error
         if (!res.ok) return res.json().then(event => Promise.reject(event));
         return res.json();
       })
@@ -56,7 +62,7 @@ class AddCategories extends Component {
       <form onSubmit={this.handleSubmit}>
         <h2>New Categories</h2>
         <label>Category Name</label>
-        <input maxLength="50" type="text" onChange={this.handleNameChange}></input>
+        <input maxLength="50" type="text" value={this.state.name} onChange={this.handleNameChange}></input>
         <input type="submit" value="submit"></input>
       </form>
     );

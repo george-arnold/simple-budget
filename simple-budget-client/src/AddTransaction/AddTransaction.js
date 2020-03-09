@@ -33,7 +33,7 @@ class AddTransaction extends Component {
     })
     .then(res => {
       if (!res.ok) return res.json().then(event => Promise.reject(event));
-      console.log('res',res);
+
       return res.json();
     })
     // this.context.addTransaction(transaction);
