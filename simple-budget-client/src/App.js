@@ -3,6 +3,7 @@ import Navigation from "./Navigation/Navigation";
 import AddTransaction from "./AddTransaction/AddTransaction";
 import SpendingTracker from "./SpendingTracker/SpendingTracker";
 import BudgetContext from "./BudgetContext";
+import config from "./config";
 
 import "./App.css";
 import AddCategories from "./AddCategory/AddCategories";
@@ -11,52 +12,53 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      categories: [
-        {
-          name: "Restaurants",
-          id: 1
-        },
-        {
-          name: "Monthly Bills",
-          id: 2
-        }
-      ],
-      transactions: [
-        {
-          id: 1,
-          venue: "Safeway",
-          amount: 123.22,
-          comments: "Weekly grocery trip",
-          categoryId: 1
-        },
-        {
-          id: 2,
-          venue: "Shell",
-          amount: 33.12,
-          comments: "gas",
-          categoryId: 1
-        },
-        {
-          id: 3,
-          venue: "Chipotle",
-          amount: 10.12,
-          comments: "food",
-          categoryId: 2
-        }
-      ]
+      categories: [],
+      transactions: []
     };
   }
 
+  componentDidMount() {
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/categories`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json"
+          // Authorization: `Bearer ${config.API_KEY}`
+        }
+      }),
+      fetch(`${config.API_ENDPOINT}/transactions`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json"
+          // Authorization: `Bearer ${config.API_KEY}`
+        }
+      })
+    ])
+      .then(([categoriesRes, transactionsRes]) => {
+        if (!categoriesRes.ok)
+          return categoriesRes.json().then(event => Promise.reject(event));
+        if (!transactionsRes.ok)
+          return transactionsRes.json().then(event => Promise.reject(event));
+          return Promise.all([categoriesRes.json(), transactionsRes.json()]);
 
+      })
+      .then(([categories, transactions]) => {
+        this.setState({ categories, transactions });
+        console.log("state log after Get", this.state);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   addTransaction = transaction => {
     this.setState({
-      transactions: [...this.state.transactions,transaction]
+      transactions: [...this.state.transactions, transaction]
     });
   };
 
   addCategory = category => {
     this.setState({
-      categories: [...this.state.categories,category]
+      categories: [...this.state.categories, category]
     });
   };
 
@@ -66,8 +68,9 @@ class App extends Component {
       transactions: this.state.transactions,
       addTransaction: this.addTransaction,
       addCategory: this.addCategory,
-      totalCost: this.state.transactions.map(transaction=>
-        transaction.amount).reduce((a,b) => a + b, 0)
+      totalCost: this.state.transactions
+        .map(transaction => transaction.amount)
+        .reduce((a, b) => a + b, 0)
     };
     console.log(value);
 

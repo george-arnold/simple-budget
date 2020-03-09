@@ -4,6 +4,7 @@ import BudgetContext from '../BudgetContext';
 import config from '../config'
 
 class AddCategories extends Component {
+
   static contextType = BudgetContext;
   constructor(props) {
     super(props);
@@ -16,8 +17,14 @@ class AddCategories extends Component {
       name: event.target.value
     });
   };
+
+  clearForm = () =>{
+    this.setState( {
+      name:""
+    })
+  }
+   //push the category names to the database and refresh the page
   handleSubmit = event => {
-    event.preventDefault();
     const category = {
       name: this.state.name,
     };
@@ -26,18 +33,14 @@ class AddCategories extends Component {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          Authorization: `Bearer ${config.API_KEY}`
+          // authorization will be added in a later release
+          // Authorization: `Bearer ${config.API_KEY}`
         },
-        body: JSON.stringify(folder)
+        body: JSON.stringify(category)
       })
       .then(res => {
         if (!res.ok) return res.json().then(event => Promise.reject(event));
         return res.json();
-      })
-      .then(category => {
-        this.context.addCategory(category);
-        //Hook up React Router, use this to push to category page if needed
-        //this.props.history.push(`/category/${category.id}`);
       })
       .catch(error => {
         console.error({ error })
@@ -53,7 +56,7 @@ class AddCategories extends Component {
       <form onSubmit={this.handleSubmit}>
         <h2>New Categories</h2>
         <label>Category Name</label>
-        <input maxlength="50" type="text" onChange={this.handleNameChange}></input>
+        <input maxLength="50" type="text" onChange={this.handleNameChange}></input>
         <input type="submit" value="submit"></input>
       </form>
     );

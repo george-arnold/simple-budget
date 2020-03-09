@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Categories.css";
 import BudgetContext from "../../BudgetContext";
 import AddCategories from "../../AddCategory/AddCategories";
+import DeleteButton from "./DeleteButton";
 
 class Categories extends Component {
   state = {
@@ -29,8 +30,8 @@ class Categories extends Component {
     console.log(transactions, "in categories");
     return (
       <main className="Categories">
-        <ul className="CategoriesList">
-          {categories.map(category => (
+        {categories.map(category => (
+          <ul className="CategoriesList">
             <li
               className="CategoriesListItem"
               key={category.id}
@@ -41,7 +42,8 @@ class Categories extends Component {
                 {transactions
                   .filter(
                     transaction =>
-                    // eslint-disable-next-line
+                      // "eslint-disable-next-line" tells React to ignore comparison use as it is intentional
+                      // eslint-disable-next-line
                       transaction.categoryId == this.state.categoryId &&
                       // eslint-disable-next-line
                       transaction.categoryId == category.id
@@ -50,10 +52,11 @@ class Categories extends Component {
                     <li key={transaction.id}>{transaction.venue}</li>
                   ))}
               </ul>
+              <DeleteButton/>
             </li>
-          ))}
-        </ul>
-        <AddCategories />
+          </ul>
+        ))}
+        <AddCategories/>
       </main>
     );
   }

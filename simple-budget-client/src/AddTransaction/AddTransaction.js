@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './AddTransaction.css';
 import BudgetContext from '../BudgetContext';
-import uniqid from 'uniqid';
+import config from '../config';
 
 class AddTransaction extends Component {
   static contextType = BudgetContext;
@@ -19,13 +19,24 @@ class AddTransaction extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const transaction = {
-      id: uniqid(),
       venue: this.state.venue,
       amount: this.state.amount,
       comments: this.state.comments,
       categoryId: this.state.categoryId
     };
-    this.context.addTransaction(transaction);
+    fetch(`${config.API_ENDPOINT}/transactions}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+    },
+      body: JSON.stringify(transaction)
+    })
+    .then(res => {
+      if (!res.ok) return res.json().then(event => Promise.reject(event));
+      console.log('res',res);
+      return res.json();
+    })
+    // this.context.addTransaction(transaction);
   };
 
   handleVenueChange = event => {
@@ -66,7 +77,7 @@ class AddTransaction extends Component {
           </select>
           <div className="TransactionFormSection">
             <label htmlFor="venue">Where did you spend?</label>
-            <input maxlength="50" id="venue" type="text" name="venue" onChange={this.handleVenueChange}></input>
+            <input maxLength="50" id="venue" type="text" name="venue" onChange={this.handleVenueChange}></input>
           </div>
           <div className="TransactionFormSection">
             <label htmlFor="amount">How much did you spend?</label>
