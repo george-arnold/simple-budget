@@ -28,14 +28,22 @@ class AddTransaction extends Component {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
-    },
+      },
       body: JSON.stringify(transaction)
     })
-    .then(res => {
-      if (!res.ok) return res.json().then(event => Promise.reject(event));
-
-      return res.json();
-    })
+      .then(res => {
+        if (!res.ok) return res.json().then(event => Promise.reject(event));
+        return res.json();
+      })
+      .then(json => {
+        this.context.addTransaction(json);
+        this.setState({
+          venue: '',
+          amount: '',
+          comments: '',
+          categoryId: ''
+        });
+      });
     // this.context.addTransaction(transaction);
   };
 
@@ -77,15 +85,33 @@ class AddTransaction extends Component {
           </select>
           <div className="TransactionFormSection">
             <label htmlFor="venue">Where did you spend?</label>
-            <input maxLength="50" id="venue" type="text" name="venue" onChange={this.handleVenueChange}></input>
+            <input
+              maxLength="50"
+              id="venue"
+              type="text"
+              name="venue"
+              value={this.state.venue}
+              onChange={this.handleVenueChange}
+            ></input>
           </div>
           <div className="TransactionFormSection">
             <label htmlFor="amount">How much did you spend?</label>
-            <input id="amount" type="number" name="amount" onChange={this.handleAmountChange}></input>
+            <input
+              id="amount"
+              type="number"
+              name="amount"
+              value={this.state.amount}
+              onChange={this.handleAmountChange}
+            ></input>
           </div>
           <div className="TransactionFormSection">
             <label htmlFor="comments">Additional Comments</label>
-            <textarea id="comments" name="comments" onChange={this.handleCommentChange}></textarea>
+            <textarea
+              id="comments"
+              name="comments"
+              value={this.state.comments}
+              onChange={this.handleCommentChange}
+            ></textarea>
           </div>
           <input type="submit" value="Submit"></input>
         </form>
