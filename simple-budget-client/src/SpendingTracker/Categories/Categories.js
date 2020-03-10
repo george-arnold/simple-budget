@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Categories.css";
 import BudgetContext from "../../BudgetContext";
 import AddCategories from "../../AddCategory/AddCategories";
-import DeleteButton from "./DeleteButton";
+// import DeleteButton from "./DeleteButton";
 
 class Categories extends Component {
   state = {
@@ -30,7 +30,7 @@ class Categories extends Component {
     return (
       <main className="Categories">
         {categories.map(category => (
-          <ul className="CategoriesList">
+          <ul key={category.id} className="CategoriesList">
             <li
               className="CategoriesListItem"
               key={category.id}
@@ -52,7 +52,7 @@ class Categories extends Component {
                   ))}
               </ul>
             </li>
-            <DeleteButton id={category.id}/>
+            {/* <DeleteButton id={category.id}/> */}
           </ul>
         ))}
         <AddCategories/>
