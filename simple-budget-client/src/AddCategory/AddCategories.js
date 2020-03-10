@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './AddCategories.css';
 import BudgetContext from '../BudgetContext';
-import config from '../config'
+import config from '../config';
 
 class AddCategories extends Component {
-
   static contextType = BudgetContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -21,39 +21,35 @@ class AddCategories extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const category = {
-      name: this.state.name,
+      name: this.state.name
     };
-    if(category.name.length >0 ) {
+    if (category.name.length > 0) {
       // post category to api
       fetch(`${config.API_ENDPOINT}/categories`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json'
           // authorization will be added in a later release
           // Authorization: `Bearer ${config.API_KEY}`
         },
         body: JSON.stringify(category)
       })
-      .then(res => {
-        // if successful 
-        if (res.ok) {
-          // add category to state in app
-        this.context.addCategory(category);
-        }
-          // clear form
-
-        // else 
-
-          // return error
-        if (!res.ok) return res.json().then(event => Promise.reject(event));
-        return res.json();
-      })
-      .catch(error => {
-        console.error({ error })
-      })
-    } 
-    else {
-      alert("Please enter a name for the category");
+        .then(res => {
+          if (!res.ok) return res.json().then(event => Promise.reject(event));
+          return res.json();
+        })
+        .then(json => {
+          this.context.addCategory(json);
+          //clear the form
+          this.setState({
+            name: ''
+          });
+        })
+        .catch(error => {
+          console.error({ error });
+        });
+    } else {
+      alert('Please enter a name for the category');
     }
   };
 
