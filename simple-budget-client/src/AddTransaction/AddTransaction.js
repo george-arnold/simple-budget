@@ -24,7 +24,8 @@ class AddTransaction extends Component {
       comments: this.state.comments,
       categoryId: this.state.categoryId
     };
-    fetch(`${config.API_ENDPOINT}/transactions}`, {
+    console.log('transaction put into Post', transaction)
+    fetch(`${config.API_ENDPOINT}/transactions`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -36,6 +37,7 @@ class AddTransaction extends Component {
         return res.json();
       })
       .then(json => {
+        console.log("response from DB", json)
         this.context.addTransaction(json);
         this.setState({
           venue: '',
@@ -44,7 +46,6 @@ class AddTransaction extends Component {
           categoryId: ''
         });
       });
-    // this.context.addTransaction(transaction);
   };
 
   handleVenueChange = event => {
