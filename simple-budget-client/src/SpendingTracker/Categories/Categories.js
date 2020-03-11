@@ -52,7 +52,7 @@ class Categories extends Component {
                   ))}
               </ul>
             </li>
-            {/* <DeleteButton id={category.id}/> */}
+            <DeleteButton id={category.id}/>
           </ul>
         ))}
         <AddCategories/>
