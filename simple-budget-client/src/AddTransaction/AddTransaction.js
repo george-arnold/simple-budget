@@ -22,7 +22,7 @@ class AddTransaction extends Component {
       venue: this.state.venue,
       amount: this.state.amount,
       comments: this.state.comments,
-      categoryId: this.state.categoryId
+      category_id: this.state.categoryId
     };
     console.log('transaction put into Post', transaction)
     fetch(`${config.API_ENDPOINT}/transactions`, {
