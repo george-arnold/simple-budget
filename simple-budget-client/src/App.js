@@ -58,12 +58,19 @@ class App extends Component {
     });
   };
 
+  deleteCategory = categoryId => {
+    this.setState({
+      categories: this.state.categories.filter(category => category.id !== categoryId)
+    });
+  };
+
   render() {
     const value = {
       categories: this.state.categories,
       transactions: this.state.transactions,
       addTransaction: this.addTransaction,
       addCategory: this.addCategory,
+      deleteCategory: this.deleteCategory,
       totalCost: this.state.transactions.map(transaction => parseFloat(transaction.amount)).reduce((a, b) => a + b, 0)
     };
     return (
@@ -71,8 +78,8 @@ class App extends Component {
         <main className="App">
           <Navigation />
           <h1>Simple Budget</h1>
-          <AddTransaction />
           <AddCategories />
+          <AddTransaction />
           <SpendingTracker />
         </main>
       </BudgetContext.Provider>

@@ -5,5 +5,6 @@ export default React.createContext({
   transactions: [],
   addTransaction : () => {},
   addCategory : () => {},
+  deleteCategory : () => {},
   totalCost: ''
 });

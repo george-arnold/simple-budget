@@ -8,11 +8,11 @@ class SpendingTracker extends Component {
   render() {
     return (
       <main className="SpendingTracker">
+      <Categories />
         <h2>Your Spending</h2>
         <p>Total Amount Spent</p>
         <p>This is where you manage your budget. Add budget categories, then, you can add and edit transactions.</p>
         <h3>{this.context.totalCost}</h3>
-        <Categories />
       </main>
     );
   }

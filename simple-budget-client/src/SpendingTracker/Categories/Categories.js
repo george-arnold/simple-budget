@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Categories.css";
 import BudgetContext from "../../BudgetContext";
 import AddCategories from "../../AddCategory/AddCategories";
-// import DeleteButton from "./DeleteButton";
+import DeleteCategory from "../../Delete/DeleteCategory";
 
 class Categories extends Component {
   state = {
@@ -12,7 +12,6 @@ class Categories extends Component {
   static contextType = BudgetContext;
 
   handleClick = categoryId => {
-   
     //if categoryId is a string, make it null, if null, make a string
     if (categoryId === this.state.categoryId) {
       this.setState({
@@ -52,7 +51,7 @@ class Categories extends Component {
                   ))}
               </ul>
             </li>
-            <DeleteButton id={category.id}/>
+            <DeleteCategory id={category.id}/>
           </ul>
         ))}
         <AddCategories/>
