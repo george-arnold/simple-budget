@@ -11,7 +11,7 @@ class DeleteCategory extends Component {
   handleDeleteCategory = event => {
     event.preventDefault();
     const categoryId = this.props.id;
-    fetch(`${config.API_ENDPOINT}/transactions/${categoryId}`, {
+    fetch(`${config.API_ENDPOINT}/categories/${categoryId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
