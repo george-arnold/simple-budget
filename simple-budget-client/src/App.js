@@ -3,6 +3,7 @@ import Navigation from './Navigation/Navigation';
 import AddTransaction from './AddTransaction/AddTransaction';
 import SpendingTracker from './SpendingTracker/SpendingTracker';
 import BudgetContext from './BudgetContext';
+import Signin from './Signin/Signin'
 import config from './config';
 
 import './App.css';
@@ -76,6 +77,7 @@ class App extends Component {
     return (
       <BudgetContext.Provider value={value}>
         <main className="App">
+          <Signin/>
           <Navigation />
           <h1>Simple Budget</h1>
           <AddCategories />
