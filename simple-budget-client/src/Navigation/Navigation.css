@@ -1,6 +1,7 @@
 .Navigation {
   display: flex;
   justify-content: flex-end;
+  width:100%
 }
 
 .Button {
@@ -10,4 +11,8 @@
   border-radius: 10px;
   font-weight: 600;
   font-size: 1.2em;
+}
+
+.Logout {
+  position: relative;
 }

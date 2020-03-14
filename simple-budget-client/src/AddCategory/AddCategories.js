@@ -55,7 +55,7 @@ class AddCategories extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="Form"onSubmit={this.handleSubmit}>
         <h2>New Categories</h2>
         <label>Category Name</label>
         <input maxLength="50" type="text" value={this.state.name} onChange={this.handleNameChange}></input>

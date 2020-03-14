@@ -97,7 +97,7 @@ class App extends Component {
         <main className="App">
           <Navigation signedIn={signedIn} onRouteChange={this.onRouteChange} />
           {route === 'home' ? (
-            <div>
+            <div className="App-Container">
               <h1>Simple Budget</h1>
               <Route exact path='/' component={AddCategories} />
               <Route exact path='/' component={AddTransaction} />

@@ -51,7 +51,7 @@ class Categories extends Component {
                   ))}
               </ul>
             </li>
-            <DeleteCategory id={category.id}/>
+            {/* <DeleteCategory id={category.id}/> */}
           </ul>
         ))}
       </main>

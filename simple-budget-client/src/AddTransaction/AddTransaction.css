@@ -2,3 +2,11 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.Link {
+  width: 50px;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: #4caf50;
+}

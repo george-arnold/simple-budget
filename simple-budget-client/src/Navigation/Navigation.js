@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Navigation.css';
+import {Link} from 'react-router-dom'
 
 class Navigation extends Component {
   render() {
@@ -7,9 +8,9 @@ class Navigation extends Component {
     if (signedIn) {
       return (
         <nav className="Navigation">
-          <button onClick={() => this.props.onRouteChange('signout')} className="Button">
+          <Link to='/' onClick={() => this.props.onRouteChange('signout')} className="Button Logout">
             Logout
-          </button>
+          </Link>
         </nav>
       );
     } else {
