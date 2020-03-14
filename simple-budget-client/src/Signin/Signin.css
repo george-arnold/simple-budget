@@ -1,0 +1,14 @@
+.Create-Account {
+  padding: 10px;
+}
+
+.Login-Forms {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Label {
+  text-transform: uppercase;
+  color: #ccc;
+}
