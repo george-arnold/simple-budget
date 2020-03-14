@@ -3,13 +3,27 @@ import './Navigation.css';
 
 class Navigation extends Component {
   render() {
-    return (
-      <nav className="Navigation">
-        <button className="Button">Signup</button>
-        <button className="Button">Login</button>
-        <button className="Button">Logout</button>
-      </nav>
-    );
+    const { signedIn } = this.props;
+    if (signedIn) {
+      return (
+        <nav className="Navigation">
+          <button onClick={() => this.props.onRouteChange('signout')} className="Button">
+            Logout
+          </button>
+        </nav>
+      );
+    } else {
+      return (
+        <nav className="Navigation">
+          <button onClick={() => this.props.onRouteChange('signup')} className="Button">
+            Sign in
+          </button>
+          <button onClick={() => this.props.onRouteChange('register')} className="Button">
+            Register
+          </button>
+        </nav>
+      );
+    }
   }
 }
 

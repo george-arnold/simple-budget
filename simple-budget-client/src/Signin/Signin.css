@@ -1,14 +1,52 @@
 .Create-Account {
   padding: 10px;
+  box-shadow: 3px;
+  border-radius: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Login-Forms {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin: 10px;
+  width: 70%;
+
 }
 
 .Label {
   text-transform: uppercase;
-  color: #ccc;
+  color: rgb(129, 128, 128);
+}
+
+.Sign-Up-Input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background-color: rgb(245, 244, 244);
+  margin: 10px;
+  width: 100%;
+  font-size: 20px;
+}
+.Sign-Up-Input:hover {
+background-color: black;
+color: white;
+}
+
+button {
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+  width: 50%;
+}
+
+.Register {
+  text-decoration: underline;
+}
+.Register:hover {
+  text-decoration: solid; 
+  cursor: pointer;
 }

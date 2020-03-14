@@ -54,7 +54,6 @@ class Categories extends Component {
             <DeleteCategory id={category.id}/>
           </ul>
         ))}
-        <AddCategories/>
       </main>
     );
   }

@@ -1,4 +1,4 @@
-.AddTransaction {
-  border:1px solid black;
-  margin: 10px;
+.TransactionFormSection {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

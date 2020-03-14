@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './AddTransaction.css';
 import BudgetContext from '../BudgetContext';
 import config from '../config';
+import Categories from '../SpendingTracker/Categories/Categories';
+import SpendingTracker from '../SpendingTracker/SpendingTracker';
+import {Link} from react-router-dom;
 
 class AddTransaction extends Component {
   static contextType = BudgetContext;
@@ -115,6 +118,8 @@ class AddTransaction extends Component {
             ></textarea>
           </div>
           <input type="submit" value="Submit"></input>
+          <Categories / >
+          <Link path='/track' Component={SpendingTracker}/>
         </form>
       </main>
     );
