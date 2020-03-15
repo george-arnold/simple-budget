@@ -49,6 +49,7 @@ class Signin extends Component {
     return (
       <div className="Create-Account">
         <h1>Sign In</h1>
+        <p>If Sign in doesn't work, Register an Account to Sign in</p>
         <form className="Login-Forms">
           <label className="Label">email</label>
           <input 
@@ -69,6 +70,14 @@ class Signin extends Component {
           <input onClick={this.handleSubmit} type="submit" value="submit"></input>
           <p className="Register" onClick={() => onRouteChange('register')}>Register</p>
         </form>
+        <section>
+          <h2>Landing Page</h2>
+          <ul>
+            <li>Step 1, set your categories</li>
+            <li>Step 2, add transations</li>
+            <li>Step 3, see your budget break down in the Spending Tracker!</li>
+          </ul>
+        </section>
       </div>
     );
   }
