@@ -3,7 +3,6 @@ import './AddTransaction.css';
 import BudgetContext from '../BudgetContext';
 import config from '../config';
 import Categories from '../SpendingTracker/Categories/Categories';
-import SpendingTracker from '../SpendingTracker/SpendingTracker';
 import {Link} from 'react-router-dom';
 
 class AddTransaction extends Component {
@@ -21,11 +20,12 @@ class AddTransaction extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const {venue, amount,comments,categoryId} = this.state
     const transaction = {
-      venue: this.state.venue,
-      amount: this.state.amount,
-      comments: this.state.comments,
-      category_id: this.state.categoryId
+      venue: venue,
+      amount: amount,
+      comments: comments,
+      category_id: categoryId
     };
     console.log('transaction put into Post', transaction)
     fetch(`${config.API_ENDPOINT}/transactions`, {

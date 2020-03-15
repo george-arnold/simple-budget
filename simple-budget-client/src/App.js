@@ -6,8 +6,7 @@ import BudgetContext from './BudgetContext';
 import Signin from './Signin/Signin';
 import Register from './Signin/Register';
 import config from './config';
-import { Route } from "react-router-dom";
-
+import { Route } from 'react-router-dom';
 
 import './App.css';
 import AddCategories from './AddCategory/AddCategories';
@@ -16,10 +15,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      route: 'signup',
+      signedIn: false,
       categories: [],
       transactions: [],
-      route: 'signup',
-      signedIn: false
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        password: '',
+        joined: ''
+      }
     };
   }
 
@@ -46,12 +52,25 @@ class App extends Component {
         return Promise.all([categoriesRes.json(), transactionsRes.json()]);
       })
       .then(([categories, transactions]) => {
-        this.setState({ categories, transactions });
+        this.setState({  categories, transactions} );
       })
       .catch(error => {
         console.log(error);
       });
   }
+  loadUser = userInfo => {
+    this.setState({
+      user: {
+        id: userInfo.id,
+        name: userInfo.name,
+        email: userInfo.email,
+        password: userInfo.password,
+        joined: userInfo.joined,
+        categories: [],
+        transactions: [],
+      }
+    });
+  };
   addTransaction = transaction => {
     this.setState({
       transactions: [...this.state.transactions, transaction]
@@ -82,9 +101,10 @@ class App extends Component {
   };
 
   render() {
+
     const value = {
       categories: this.state.categories,
-      transactions: this.state.transactions,
+      transactions: this.state.user.transactions,
       addTransaction: this.addTransaction,
       addCategory: this.addCategory,
       deleteCategory: this.deleteCategory,
@@ -99,14 +119,14 @@ class App extends Component {
           {route === 'home' ? (
             <div className="App-Container">
               <h1>Simple Budget</h1>
-              <Route exact path='/' component={AddCategories} />
-              <Route exact path='/' component={AddTransaction} />
-              <Route exact path='/track' component={SpendingTracker} />
+              <Route exact path="/" component={AddCategories} />
+              <Route exact path="/" component={AddTransaction} />
+              <Route exact path="/track" component={SpendingTracker} />
             </div>
           ) : route === 'signup' ? (
-            <Signin onRouteChange={this.onRouteChange} />
+            <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
           ) : (
-            <Register onRouteChange={this.onRouteChange} />
+            <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
           )}
         </main>
       </BudgetContext.Provider>

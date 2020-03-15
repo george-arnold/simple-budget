@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./Categories.css";
 import BudgetContext from "../../BudgetContext";
-import AddCategories from "../../AddCategory/AddCategories";
-import DeleteCategory from "../../Delete/DeleteCategory";
 
 class Categories extends Component {
   state = {
@@ -51,7 +49,6 @@ class Categories extends Component {
                   ))}
               </ul>
             </li>
-            {/* <DeleteCategory id={category.id}/> */}
           </ul>
         ))}
       </main>
