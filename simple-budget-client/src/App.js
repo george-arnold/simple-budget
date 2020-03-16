@@ -7,7 +7,6 @@ import Signin from './Signin/Signin';
 import Register from './Signin/Register';
 import config from './config';
 import { Route } from 'react-router-dom';
-
 import './App.css';
 import AddCategories from './AddCategory/AddCategories';
 
@@ -104,7 +103,7 @@ class App extends Component {
 
     const value = {
       categories: this.state.categories,
-      transactions: this.state.user.transactions,
+      transactions: this.state.transactions,
       addTransaction: this.addTransaction,
       addCategory: this.addCategory,
       deleteCategory: this.deleteCategory,
