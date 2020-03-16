@@ -9,6 +9,7 @@ import config from './config';
 import { Route } from 'react-router-dom';
 import './App.css';
 import AddCategories from './AddCategory/AddCategories';
+import ParticleConfig from './ParticleConfig'
 
 class App extends Component {
   constructor(props) {
@@ -111,10 +112,12 @@ class App extends Component {
     };
     const { signedIn } = this.state;
     const { route } = this.state;
+
     return (
       <BudgetContext.Provider value={value}>
         <main className="App">
           <Navigation signedIn={signedIn} onRouteChange={this.onRouteChange} />
+
           {route === 'home' ? (
             <div className="App-Container">
               <h1>Simple Budget</h1>
@@ -123,9 +126,15 @@ class App extends Component {
               <Route exact path="/track" component={SpendingTracker} />
             </div>
           ) : route === 'signup' ? (
+            <div>
+              <ParticleConfig/>
             <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+            </div>
           ) : (
+            <div>
+            <ParticleConfig/>
             <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+            </div>
           )}
         </main>
       </BudgetContext.Provider>

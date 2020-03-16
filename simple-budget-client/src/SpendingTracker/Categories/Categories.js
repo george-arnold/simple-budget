@@ -26,7 +26,7 @@ class Categories extends Component {
                       transaction.categoryId == category.id
                   )
                   .map(transaction => (
-                    <li key={transaction.id}>{transaction.venue}</li>
+                    <li key={transaction.id}>{transaction.venue} Spent: ${transaction.amount}</li>
                   ))}
               </ul>
             </li>

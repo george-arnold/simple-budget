@@ -72,6 +72,7 @@ class Signin extends Component {
         </form>
         <section>
           <h2>Landing Page</h2>
+
           <ul>
             <li>Step 1, set your categories</li>
             <li>Step 2, add transations</li>
