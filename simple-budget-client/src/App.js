@@ -34,14 +34,16 @@ class App extends Component {
       fetch(`${config.API_ENDPOINT}/categories`, {
         method: 'GET',
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'authorization': `basic ${TokenService.getAuthToken()}`,
           // Authorization: `Bearer ${config.API_KEY}`
         }
       }),
       fetch(`${config.API_ENDPOINT}/transactions`, {
         method: 'GET',
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'authorization': `basic ${TokenService.getAuthToken()}`,
           // Authorization: `Bearer ${config.API_KEY}`
         }
       })

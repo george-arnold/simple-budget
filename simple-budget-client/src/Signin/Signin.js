@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Signin.css';
 import config from '../config'
+import TokenService from '../token-service'
 
 class Signin extends Component {
   constructor(props) {
@@ -23,6 +24,10 @@ class Signin extends Component {
   handleSubmit = (event) => { 
     event.preventDefault();
     const {email, password} = this.state;
+    TokenService.saveAuthToken(
+      TokenService.makeBasicAuthToken(email, password)
+    );
+    
     const signIn = {
       email:  email,
       password: password

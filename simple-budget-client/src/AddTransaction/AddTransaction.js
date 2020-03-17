@@ -31,7 +31,8 @@ class AddTransaction extends Component {
     fetch(`${config.API_ENDPOINT}/transactions`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'authorization': `basic ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(transaction)
     })

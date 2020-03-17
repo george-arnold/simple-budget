@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './AddCategories.css';
 import BudgetContext from '../BudgetContext';
 import config from '../config';
+import TokenService from '../token-service'
 
 class AddCategories extends Component {
   static contextType = BudgetContext;
@@ -28,7 +29,8 @@ class AddCategories extends Component {
       fetch(`${config.API_ENDPOINT}/categories`, {
         method: 'POST',
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'authorization': `basic ${TokenService.getAuthToken()}`,
           // authorization will be added in a later release
           // Authorization: `Bearer ${config.API_KEY}`
         },
