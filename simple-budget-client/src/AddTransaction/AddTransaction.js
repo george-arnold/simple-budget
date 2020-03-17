@@ -4,7 +4,7 @@ import BudgetContext from '../BudgetContext';
 import config from '../config';
 import Categories from '../SpendingTracker/Categories/Categories';
 import {Link} from 'react-router-dom';
-
+import TokenService from '../token-service'
 class AddTransaction extends Component {
   static contextType = BudgetContext;
 
