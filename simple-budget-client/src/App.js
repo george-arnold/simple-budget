@@ -10,7 +10,7 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import AddCategories from './AddCategory/AddCategories';
 import ParticleConfig from './ParticleConfig'
-import TokenService from '../token-service'
+import TokenService from './token-service'
 
 class App extends Component {
   constructor(props) {
@@ -95,6 +95,7 @@ class App extends Component {
   onRouteChange = route => {
     if (route === 'signout') {
       this.setState({ signedIn: false });
+      TokenService.clearAuthToken();
     } else if (route === 'home') {
       this.setState({ signedIn: true });
     }

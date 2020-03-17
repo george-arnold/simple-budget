@@ -1,4 +1,4 @@
-import config from "../config";
+import config from "./config";
 
 const TokenService = {
   saveAuthToken(token) {
@@ -13,8 +13,8 @@ const TokenService = {
   hasAuthToken() {
     return !!TokenService.getAuthToken();
   },
-  makeBasicAuthToken(userName, password) {
-    return window.btoa(`${userName}:${password}`);
+  makeBasicAuthToken(email, password) {
+    return window.btoa(`${email}:${password}`);
   }
 };
 

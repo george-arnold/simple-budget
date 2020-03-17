@@ -32,7 +32,7 @@ class AddTransaction extends Component {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'Authorization': `basic ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(transaction)
     })

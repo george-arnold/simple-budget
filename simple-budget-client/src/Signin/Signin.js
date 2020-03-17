@@ -27,12 +27,10 @@ class Signin extends Component {
     TokenService.saveAuthToken(
       TokenService.makeBasicAuthToken(email, password)
     );
-    
     const signIn = {
       email:  email,
       password: password
     }
-    console.log(signIn);
     fetch(`${config.API_ENDPOINT}/signin`, {
       method: 'POST',
       headers: {
