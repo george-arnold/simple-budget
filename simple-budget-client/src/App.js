@@ -10,6 +10,7 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import AddCategories from './AddCategory/AddCategories';
 import ParticleConfig from './ParticleConfig'
+import TokenService from '../token-service'
 
 class App extends Component {
   constructor(props) {
