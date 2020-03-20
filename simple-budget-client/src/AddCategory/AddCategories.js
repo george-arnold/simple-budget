@@ -23,6 +23,7 @@ class AddCategories extends Component {
     event.preventDefault();
     const category = {
       name: this.state.name
+      
     };
     if (category.name.length > 0) {
       console.log(TokenService.getAuthToken());

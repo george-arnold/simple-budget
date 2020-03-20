@@ -5,12 +5,11 @@ import SpendingTracker from './SpendingTracker/SpendingTracker';
 import BudgetContext from './BudgetContext';
 import Signin from './Signin/Signin';
 import Register from './Signin/Register';
-import config from './config';
 import { Route } from 'react-router-dom';
 import './App.css';
 import AddCategories from './AddCategory/AddCategories';
-import ParticleConfig from './ParticleConfig'
-import TokenService from './token-service'
+import ParticleConfig from './ParticleConfig';
+import TokenService from './token-service';
 
 class App extends Component {
   constructor(props) {
@@ -19,61 +18,27 @@ class App extends Component {
       route: 'signup',
       signedIn: false,
       categories: [],
-      transactions: [],
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        password: '',
-        joined: ''
-      }
+      transactions: []
+      //  will implement later
+      //user: {
+      //   name: '',
+      //   email: '',
+      //   joined: ''
+      // }
     };
   }
 
-  componentDidMount() {
-    Promise.all([
-      fetch(`${config.API_ENDPOINT}/categories`, {
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-          'authorization': `basic ${TokenService.getAuthToken()}`,
-          // Authorization: `Bearer ${config.API_KEY}`
-        }
-      }),
-      fetch(`${config.API_ENDPOINT}/transactions`, {
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-          'authorization': `basic ${TokenService.getAuthToken()}`,
-          // Authorization: `Bearer ${config.API_KEY}`
-        }
-      })
-    ])
-      .then(([categoriesRes, transactionsRes]) => {
-        if (!categoriesRes.ok) return categoriesRes.json().then(event => Promise.reject(event));
-        if (!transactionsRes.ok) return transactionsRes.json().then(event => Promise.reject(event));
-        return Promise.all([categoriesRes.json(), transactionsRes.json()]);
-      })
-      .then(([categories, transactions]) => {
-        this.setState({  categories, transactions} );
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-  loadUser = userInfo => {
-    this.setState({
-      user: {
-        id: userInfo.id,
-        name: userInfo.name,
-        email: userInfo.email,
-        password: userInfo.password,
-        joined: userInfo.joined,
-        categories: [],
-        transactions: [],
-      }
-    });
-  };
+  // will implement in later edition
+  // loadUser = () => {
+  //   this.setState({
+  //     categories: [],
+  //     // transactions: [],
+  //     // user: {
+  //     //   email: userInfo.email,
+  //     //   joined: userInfo.joined,
+  //     // }
+  // //   });
+  // };
   addTransaction = transaction => {
     this.setState({
       transactions: [...this.state.transactions, transaction]
@@ -94,7 +59,11 @@ class App extends Component {
 
   onRouteChange = route => {
     if (route === 'signout') {
-      this.setState({ signedIn: false });
+      this.setState({
+        signedIn: false,
+        transactions: [],
+        categories: []
+      });
       TokenService.clearAuthToken();
     } else if (route === 'home') {
       this.setState({ signedIn: true });
@@ -105,13 +74,13 @@ class App extends Component {
   };
 
   render() {
-
     const value = {
       categories: this.state.categories,
       transactions: this.state.transactions,
       addTransaction: this.addTransaction,
       addCategory: this.addCategory,
       deleteCategory: this.deleteCategory,
+      // loadUser: this.loadUser,
       totalCost: this.state.transactions.map(transaction => parseFloat(transaction.amount)).reduce((a, b) => a + b, 0)
     };
     const { signedIn } = this.state;
@@ -131,13 +100,13 @@ class App extends Component {
             </div>
           ) : route === 'signup' ? (
             <div>
-              <ParticleConfig/>
-            <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              <ParticleConfig />
+              <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
             </div>
           ) : (
             <div>
-            <ParticleConfig/>
-            <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              <ParticleConfig />
+              <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
             </div>
           )}
         </main>
