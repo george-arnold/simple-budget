@@ -7,17 +7,6 @@ import TokenService from '../../token-service';
 class Categories extends Component {
   static contextType = BudgetContext;
 
-  //     .then(([categoriesRes, transactionsRes]) => {
-  //       if (!categoriesRes.ok) return categoriesRes.json().then(event => Promise.reject(event));
-  //       if (!transactionsRes.ok) return transactionsRes.json().then(event => Promise.reject(event));
-  //       return Promise.all([categoriesRes.json(), transactionsRes.json()]);
-  //     })
-  //     .then(([categories, transactions]) => {
-  //       this.setState({  categories, transactions} );
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
   componentDidMount() {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/categories`, {
@@ -41,7 +30,7 @@ class Categories extends Component {
         return Promise.all([categoriesRes.json(), transactionsRes.json()]);
       })
       .then(([categories, transactions]) => {
-        console.log('cat and tran', categories, transactions)
+        console.log('cat and tran', categories, transactions);
         categories.map(category => this.context.addCategory(category));
         transactions.map(transaction => this.context.addTransaction(transaction));
       });

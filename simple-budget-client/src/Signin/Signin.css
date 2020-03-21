@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   width: 375px;
-  background-color:rgb(80, 175, 0);
+  background-color: rgb(80, 175, 0);
 }
 
 .Login-Forms {
@@ -35,8 +35,8 @@
   font-size: 20px;
 }
 .Sign-Up-Input:hover {
-background-color: black;
-color: white;
+  background-color: black;
+  color: white;
 }
 
 button {
@@ -49,7 +49,10 @@ button {
   text-decoration: underline;
 }
 .Register:hover {
-  text-decoration: solid; 
+  text-decoration: solid;
   cursor: pointer;
 }
 
+.error {
+  color: red;
+}

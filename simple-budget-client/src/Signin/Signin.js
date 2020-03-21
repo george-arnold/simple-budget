@@ -29,32 +29,42 @@ class Signin extends Component {
   }
 
   handleEmail = event => {
-    let message = ' ';
-    if (!validEmailRegex.test(event.target.value)) {
-      message = 'Email is not valid';
+    let message = '';
+    const { value } = event.target;
+    if (!validEmailRegex.test(value)) {
+      message = '--Email is not valid';
     }
-    this.setState({
-      email: event.target.value,
-      errors: { email: message }
+    this.setState(prevState => {
+      return {
+        email: value,
+        errors: {
+          email: message,
+          password: prevState.errors.password
+        }
+      };
     });
-    console.log('email', this.state);
   };
 
   handlePassword = event => {
     let passwordError = '';
-    if (event.target.value < 8) {
-      passwordError = 'password must be at least 8 characters';
+    const { value } = event.target;
+    if (value.length < 8) {
+      passwordError = '--Password must be at least 8 characters';
     }
-    console.log('password', event.target.value.length);
-    this.setState({
-      password: event.target.value,
-      errors: { password: passwordError }
+    this.setState(prevState => {
+      return {
+        password: value,
+        errors: {
+          email: prevState.errors.email,
+          password: passwordError
+        }
+      };
     });
   };
   handleSubmit = event => {
     event.preventDefault();
-    if (!validateForm(this.state.errors)) {
-      console.log('invalid Form');
+    if (!validateForm(this.state.errors) || !(this.state.email && this.state.password)) {
+      alert('Error: please complete the form' + this.state.errors.email + ' ' + this.state.errors.password);
     } else {
       const { email, password } = this.state;
       TokenService.saveAuthToken(TokenService.makeBasicAuthToken(email, password));
@@ -95,11 +105,11 @@ class Signin extends Component {
             value={this.state.email}
             onChange={this.handleEmail}
           />
-          {/* {errors.email.length > 0 && <span className="error">{errors.email}</span>} */}
+          {errors.email.length > 0 && <span className="error">{errors.email}</span>}
 
           <label className="Label">Password</label>
           <input type="password" className="Sign-Up-Input" value={this.state.password} onChange={this.handlePassword} />
-          {/* {errors.password.length > 0 && <span className="error">{errors.password}</span>} */}
+          {errors.password.length > 0 && <span className="error">{errors.password}</span>}
 
           <input onClick={this.handleSubmit} type="submit" value="submit"></input>
 
