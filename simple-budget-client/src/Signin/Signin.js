@@ -119,7 +119,7 @@ class Signin extends Component {
           </p>
         </form>
         <section>
-          <h2>Landing Page</h2>
+          <p>This is where you manage your budget. Add budget categories, then, you can add and edit transactions.</p>
 
           <ul>
             <li>Step 1, set your categories</li>
