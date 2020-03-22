@@ -3,8 +3,8 @@ import './AddTransaction.css';
 import BudgetContext from '../BudgetContext';
 import config from '../config';
 import Categories from '../SpendingTracker/Categories/Categories';
-import {Link} from 'react-router-dom';
-import TokenService from '../token-service'
+import { Link } from 'react-router-dom';
+import TokenService from '../token-service';
 class AddTransaction extends Component {
   static contextType = BudgetContext;
 
@@ -20,19 +20,19 @@ class AddTransaction extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const {venue, amount,comments,categoryId} = this.state
+    const { venue, amount, comments, categoryId } = this.state;
     const transaction = {
       venue: venue,
       amount: amount,
       comments: comments,
       category_id: categoryId
     };
-    console.log('transaction put into Post', transaction)
+    console.log('transaction put into Post', transaction);
     fetch(`${config.API_ENDPOINT}/transactions`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `basic ${TokenService.getAuthToken()}`,
+        Authorization: `basic ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(transaction)
     })
@@ -41,8 +41,9 @@ class AddTransaction extends Component {
         return res.json();
       })
       .then(json => {
-        console.log("response from DB", json)
+        console.log('response from DB', json);
         this.context.addTransaction(json);
+        this.context.addToTotal();
         this.setState({
           venue: '',
           amount: '',
@@ -76,10 +77,10 @@ class AddTransaction extends Component {
   render() {
     const { categories } = this.context;
     return (
-      <main className="AddTransaction">
-        <h2>Transaction Entry</h2>
-        <form onSubmit={this.handleSubmit}>
-          <select value={this.state.categoryId} onChange={this.handleCategoryChange}>
+      <main className="FormContainer">
+        <h2 className="FormTitle">Transaction Entry</h2>
+        <form className="Form" onSubmit={this.handleSubmit}>
+          <select className="CategorySelector" value={this.state.categoryId} onChange={this.handleCategoryChange}>
             <option>Select a category</option>
             {categories.map(category => (
               <option key={category.id} value={category.id}>
@@ -88,40 +89,40 @@ class AddTransaction extends Component {
               </option>
             ))}
           </select>
-          <div className="TransactionFormSection">
-            <label htmlFor="venue">Where did you spend?</label>
-            <input
-              maxLength="50"
-              id="venue"
-              type="text"
-              name="venue"
-              value={this.state.venue}
-              onChange={this.handleVenueChange}
-            ></input>
-          </div>
-          <div className="TransactionFormSection">
-            <label htmlFor="amount">How much did you spend?</label>
-            <input
-              id="amount"
-              type="number"
-              name="amount"
-              value={this.state.amount}
-              onChange={this.handleAmountChange}
-            ></input>
-          </div>
-          <div className="TransactionFormSection">
-            <label htmlFor="comments">Additional Comments</label>
-            <textarea
-              id="comments"
-              name="comments"
-              value={this.state.comments}
-              onChange={this.handleCommentChange}
-            ></textarea>
-          </div>
+
+          <label htmlFor="venue">Where did you spend?</label>
+          <input
+            maxLength="50"
+            id="venue"
+            type="text"
+            name="venue"
+            value={this.state.venue}
+            onChange={this.handleVenueChange}
+          ></input>
+
+          <label htmlFor="amount">How much did you spend?</label>
+          <input
+            id="amount"
+            type="number"
+            name="amount"
+            value={this.state.amount}
+            onChange={this.handleAmountChange}
+          ></input>
+
+          <label htmlFor="comments">Additional Comments</label>
+          <textarea
+            id="comments"
+            name="comments"
+            value={this.state.comments}
+            onChange={this.handleCommentChange}
+          ></textarea>
+
           <input type="submit" value="Submit"></input>
-          <Categories / >
+          <Categories />
           <h4>Click here to see your total spending</h4>
-          <Link className="Link" to='/track'>SpendingTracker</Link>
+          <Link className="Link" to="/track">
+            SpendingTracker
+          </Link>
         </form>
       </main>
     );

@@ -3,7 +3,7 @@ import './Signin.css';
 import config from '../config';
 
 const validEmailRegex = RegExp(
-  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
 );
 const validateForm = errors => {
   let valid = true;
@@ -68,7 +68,7 @@ class Register extends Component {
     if (!validateForm(this.state.errors) || !(this.state.email && this.state.password)) {
       alert('Error: please complete the form' + this.state.errors.email + ' ' + this.state.errors.password);
     } else {
-      const { email, password, userName } = this.state;
+      const { email, password } = this.state;
       const register = {
         email: email,
         password: password

@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-.App{
+.App {
   font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.App-Container{
-  width:100%
+.App-Container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Particles {

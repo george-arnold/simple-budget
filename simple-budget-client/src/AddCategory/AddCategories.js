@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './AddCategories.css';
 import BudgetContext from '../BudgetContext';
 import config from '../config';
-import TokenService from '../token-service'
+import TokenService from '../token-service';
 
 class AddCategories extends Component {
   static contextType = BudgetContext;
@@ -23,7 +23,6 @@ class AddCategories extends Component {
     event.preventDefault();
     const category = {
       name: this.state.name
-      
     };
     if (category.name.length > 0) {
       console.log(TokenService.getAuthToken());
@@ -31,7 +30,7 @@ class AddCategories extends Component {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
-          'Authorization': `basic ${TokenService.getAuthToken()}`,
+          Authorization: `basic ${TokenService.getAuthToken()}`
           // authorization will be added in a later release
           // Authorization: `Bearer ${config.API_KEY}`
         },
@@ -58,12 +57,14 @@ class AddCategories extends Component {
 
   render() {
     return (
-      <form className="Form"onSubmit={this.handleSubmit}>
-        <h2>New Categories</h2>
-        <label>Category Name</label>
-        <input maxLength="50" type="text" value={this.state.name} onChange={this.handleNameChange}></input>
-        <input type="submit" value="submit"></input>
-      </form>
+      <main className="FormContainer">
+        <h2 className="FormTitle">New Categories</h2>
+        <form className="Form" onSubmit={this.handleSubmit}>
+          <label>Category Name</label>
+          <input maxLength="50" type="text" value={this.state.name} onChange={this.handleNameChange}></input>
+          <input className="Submit" type="submit" value="submit"></input>
+        </form>
+      </main>
     );
   }
 }

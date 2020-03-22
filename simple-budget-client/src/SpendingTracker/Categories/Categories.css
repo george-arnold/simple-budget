@@ -2,11 +2,12 @@
   border: 1px solid black;
   box-shadow: 1em;
   margin: 10px;
+  width: 100%;
 }
 
 .CategoriesList {
   list-style: none;
-  display:flex;
+  display: flex;
 }
 
 .CategoriesListItem {
@@ -16,10 +17,11 @@
   border: 1px solid black;
   border-radius: 5px;
   font-size: 18px;
-  width: 30%;
+  width: 70%;
 }
 
 .TransactionList {
+  list-style: none;
   background-color: white;
   font-size: 14px;
 }

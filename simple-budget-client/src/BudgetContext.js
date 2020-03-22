@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
 
 export default React.createContext({
   categories: [],
   transactions: [],
-  addTransaction : () => {},
-  addCategory : () => {},
-  deleteCategory : () => {},
+  addTransaction: () => {},
+  addCategory: () => {},
+  deleteCategory: () => {},
+  addToTotal: () => {},
   // loadUser: () => {},
   totalCost: ''
 });

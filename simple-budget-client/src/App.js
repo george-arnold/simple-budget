@@ -19,7 +19,6 @@ class App extends Component {
       signedIn: false,
       categories: [],
       transactions: []
-      //  will implement later
       //user: {
       //   name: '',
       //   email: '',
@@ -80,6 +79,7 @@ class App extends Component {
       addTransaction: this.addTransaction,
       addCategory: this.addCategory,
       deleteCategory: this.deleteCategory,
+      addToTotal: this.addToTotal,
       // loadUser: this.loadUser,
       totalCost: this.state.transactions.map(transaction => parseFloat(transaction.amount)).reduce((a, b) => a + b, 0)
     };
