@@ -41,9 +41,7 @@ class AddTransaction extends Component {
         return res.json();
       })
       .then(json => {
-        console.log('response from DB', json);
         this.context.addTransaction(json);
-        this.context.addToTotal();
         this.setState({
           venue: '',
           amount: '',

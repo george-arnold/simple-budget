@@ -50,9 +50,9 @@ class App extends Component {
     });
   };
 
-  deleteCategory = categoryId => {
+  deleteTransaction = transactionId => {
     this.setState({
-      categories: this.state.categories.filter(category => category.id !== categoryId)
+      categories: this.state.categories.filter(transaction => transaction.id !== transactionId)
     });
   };
 
@@ -78,7 +78,7 @@ class App extends Component {
       transactions: this.state.transactions,
       addTransaction: this.addTransaction,
       addCategory: this.addCategory,
-      deleteCategory: this.deleteCategory,
+      deleteTransaction: this.deleteTransaction,
       addToTotal: this.addToTotal,
       // loadUser: this.loadUser,
       totalCost: this.state.transactions.map(transaction => parseFloat(transaction.amount)).reduce((a, b) => a + b, 0)

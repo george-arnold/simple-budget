@@ -3,6 +3,7 @@ import './Categories.css';
 import BudgetContext from '../../BudgetContext';
 import config from '../../config';
 import TokenService from '../../token-service';
+import DeleteTransaction from '../../Delete/DeleteTransaction';
 
 class Categories extends Component {
   static contextType = BudgetContext;
@@ -32,13 +33,10 @@ class Categories extends Component {
       .then(([categories, transactions]) => {
         categories.map(category => this.context.addCategory(category));
         transactions.map(transaction => this.context.addTransaction(transaction));
-        console.log('cat and tran', categories, transactions);
       });
   }
   render() {
     const { categories = [], transactions = [] } = this.context;
-
-    console.log('after addition', categories);
     return (
       <main className="Categories">
         {categories.map(category => {
@@ -64,9 +62,10 @@ class Categories extends Component {
                   )
                   .map(transaction => (
                     <li key={transaction.id}>
-                      <p>
+                      <div>
                         {transaction.venue}: ${transaction.amount}
-                      </p>
+                        <DeleteTransaction id={transaction.id} />
+                      </div>
                     </li>
                   ))}
               </ul>
