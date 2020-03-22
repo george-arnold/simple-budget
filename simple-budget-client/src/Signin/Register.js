@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Signin.css';
 import config from '../config';
+import TokenService from '../token-service';
 
 const validEmailRegex = RegExp(
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
@@ -69,6 +70,7 @@ class Register extends Component {
       alert('Error: please complete the form' + this.state.errors.email + ' ' + this.state.errors.password);
     } else {
       const { email, password } = this.state;
+      TokenService.saveAuthToken(TokenService.makeBasicAuthToken(email, password));
       const register = {
         email: email,
         password: password
