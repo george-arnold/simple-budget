@@ -25,7 +25,6 @@ class DeleteTransaction extends Component {
       })
       .then(() => {
         this.context.deleteTransaction(transactionId);
-        this.props.history.push('/');
       })
       .catch(error => {
         console.error({ error });

@@ -52,7 +52,7 @@ class App extends Component {
 
   deleteTransaction = transactionId => {
     this.setState({
-      categories: this.state.categories.filter(transaction => transaction.id !== transactionId)
+      transactions: this.state.transactions.filter(transaction => transaction.id !== transactionId)
     });
   };
 
