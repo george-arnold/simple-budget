@@ -53,6 +53,7 @@ class Signin extends Component {
     }
     this.setState(prevState => {
       return {
+        loginError: '',
         password: value,
         errors: {
           email: prevState.errors.email,
@@ -79,12 +80,31 @@ class Signin extends Component {
         },
         body: JSON.stringify(signIn)
       })
-        .then(response => response.json())
+        .then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
         .then(user => {
           console.log(user);
           if (user.id) {
             this.props.onRouteChange('home');
           }
+        })
+        .catch(res => {
+          this.setState(prevState => {
+            if (res.email) {
+              return {
+                errors: {
+                  email: res.email,
+                  password: prevState.errors.password
+                }
+              };
+            } else {
+              return {
+                errors: {
+                  email: prevState.errors.email,
+                  password: res.password
+                }
+              };
+            }
+          });
         });
     }
   };
