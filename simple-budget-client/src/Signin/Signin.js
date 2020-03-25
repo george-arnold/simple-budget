@@ -4,7 +4,7 @@ import config from '../config';
 import TokenService from '../token-service';
 
 const validEmailRegex = RegExp(
-  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
 );
 const validateForm = errors => {
   let valid = true;
@@ -113,41 +113,66 @@ class Signin extends Component {
     const { errors } = this.state;
     const { onRouteChange } = this.props;
     return (
-      <div className="Create-Account">
-        <h1>Sign In</h1>
-        <p>If Sign in doesn't work, Register an Account to Sign in</p>
-        <form className="Login-Forms">
-          <label className="Label">email</label>
-          <input
-            className="Sign-Up-Input"
-            type="email"
-            name="email-address"
-            id="email-address"
-            value={this.state.email}
-            onChange={this.handleEmail}
-          />
-          {errors.email.length > 0 && <span className="error">{errors.email}</span>}
+      <main className="Landing-Page">
+        <section className="Create-Account" name="Login-Section" id="Login-Section">
+          <h2>Budget Management, Made Simple </h2>
+          <h3>Sign In to Get Started</h3>
 
-          <label className="Label">Password</label>
-          <input type="password" className="Sign-Up-Input" value={this.state.password} onChange={this.handlePassword} />
-          {errors.password.length > 0 && <span className="error">{errors.password}</span>}
+          <form className="Login-Forms">
+            <label className="Label">email</label>
+            <input
+              className="Sign-Up-Input"
+              type="email"
+              name="email-address"
+              id="email-address"
+              value={this.state.email}
+              onChange={this.handleEmail}
+            />
+            {errors.email.length > 0 && <span className="error">{errors.email}</span>}
 
-          <input onClick={this.handleSubmit} type="submit" value="submit"></input>
+            <label className="Label">Password</label>
+            <input
+              type="password"
+              className="Sign-Up-Input"
+              value={this.state.password}
+              onChange={this.handlePassword}
+            />
+            {errors.password.length > 0 && <span className="error">{errors.password}</span>}
 
+            <input onClick={this.handleSubmit} className="Submit" type="submit" value="submit"></input>
+          </form>
           <p className="Register" onClick={() => onRouteChange('register')}>
-            Register
+            Click to create an account?{' '}
           </p>
-        </form>
-        <section>
-          <p>This is where you manage your budget. Add budget categories, then, you can add and edit transactions.</p>
-
-          <ul>
-            <li>Step 1, set your categories</li>
-            <li>Step 2, add transations</li>
-            <li>Step 3, see your budget break down in the Spending Tracker!</li>
-          </ul>
         </section>
-      </div>
+        <h2 className="Info-Heading">How Simple Budget Works</h2>
+        <section className="Landing-Page-Info">
+          <div className="Flex-Container-1">
+            <div className="Landing-Page-Section">
+              <h3>Step 1: Set up your categories</h3>
+              <p>By categorizing your expenses you can easily see where you are over-spending</p>
+            </div>
+          </div>
+          <div className="Flex-Container-2">
+            <div className="Landing-Page-Section">
+              <h3>Step 2: Add Transactions</h3>
+              <p>
+                Either each time you spend money, or by taking 2 minutes a day, upload your any financial transaction
+                that you want to track{' '}
+              </p>
+            </div>
+          </div>
+          <div className="Flex-Container-3">
+            <div className="Landing-Page-Section">
+              <h3>Step 3: Enjoy your savings!</h3>
+              <p>
+                Once you make a daily routine out of checking your budget, you'll see where you're spending too much and
+                you'll learn to save!{' '}
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
     );
   }
 }

@@ -7,23 +7,24 @@
 .Button {
   background-color: grey;
   margin: 10px;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   font-weight: 600;
   font-size: 1.2em;
+  width: 200px;
 }
 
-.Logout {
+/* .Logout {
   position: relative;
-}
+} */
 
 .Logo {
-  width: 100px;
+  width: 50px;
 }
 
 .Logo-Link {
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: white;
+  color: black;
 }

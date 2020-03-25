@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class Logo extends Component {
   render() {
     return (
-      <Link to="/" className="Logo-Link">
+      <Link to="/" className="Logo-Link Button">
         <img
           alt="Simple Budget Logo"
           className="Logo"

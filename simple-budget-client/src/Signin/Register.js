@@ -123,7 +123,7 @@ class Register extends Component {
           />
           {errors.password.length > 0 && <span className="error">{errors.password}</span>}
 
-          <input onClick={this.handleSubmit} type="submit" value="submit"></input>
+          <input onClick={this.handleSubmit} className="Submit" type="submit" value="submit"></input>
         </form>
       </div>
     );
