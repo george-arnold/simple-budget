@@ -10,9 +10,11 @@ class Navigation extends Component {
       return (
         <nav className="Navigation">
           <Logo />
-          <Link to="/" onClick={() => this.props.onRouteChange('signout')} className="Button">
-            Logout
-          </Link>
+          <button onClick={() => this.props.onRouteChange('signout')} className="Button">
+            <Link className="Logout-Link" to="/">
+              Logout
+            </Link>
+          </button>
         </nav>
       );
     } else if (route === 'signup') {

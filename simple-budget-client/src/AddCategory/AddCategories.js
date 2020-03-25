@@ -59,8 +59,17 @@ class AddCategories extends Component {
         <h2 className="FormTitle">New Categories</h2>
         <form className="Form" onSubmit={this.handleSubmit}>
           <label>Category Name</label>
-          <input maxLength="50" type="text" value={this.state.name} onChange={this.handleNameChange}></input>
-          <input className="Submit" type="submit" value="submit"></input>
+          <input
+            className="Form-Input"
+            maxLength="50"
+            type="text"
+            name="Category-Input"
+            id="Category-Input"
+            placeholder="Bills, Groceries, etc..."
+            value={this.state.name}
+            onChange={this.handleNameChange}
+          ></input>
+          <input className="Submit" type="submit" value="Add Category"></input>
         </form>
       </main>
     );

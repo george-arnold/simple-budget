@@ -84,12 +84,10 @@ class App extends Component {
       totalCost: this.state.transactions.map(transaction => parseFloat(transaction.amount)).reduce((a, b) => a + b, 0)
     };
     const { signedIn, route } = this.state;
-
     return (
       <BudgetContext.Provider value={value}>
         <main className="App">
           <Navigation signedIn={signedIn} route={route} onRouteChange={this.onRouteChange} />
-
           {route === 'home' ? (
             <div className="App-Container">
               <h1>Simple Budget</h1>

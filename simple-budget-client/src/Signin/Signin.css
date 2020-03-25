@@ -88,7 +88,7 @@ button {
   width: 350px;
   margin: 5px;
   border-radius: 10px;
-  height: 200px;
+  height: 250px;
   padding: 10px;
 }
 
@@ -101,7 +101,15 @@ button {
   flex-direction: column;
 }
 
-@media only screen and (min-device-width: 768px) {
+.Landing-Page-Heading {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.Landing-Page-Icon {
+  width: 100px;
+}
+@media only screen and (min-device-width: 798px) {
   .Landing-Page-Section {
     width: 250px;
   }

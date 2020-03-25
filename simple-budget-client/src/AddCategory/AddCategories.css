@@ -18,6 +18,17 @@
   text-align: left;
 }
 
+.Form-Input {
+  width: 50%;
+  font-size: 20px;
+}
+
 input {
   margin: 5px;
+}
+
+@media only screen and (min-device-width: 768px) {
+  .FormContainer {
+    width: 50%;
+  }
 }
