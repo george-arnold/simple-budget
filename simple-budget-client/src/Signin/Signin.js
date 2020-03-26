@@ -176,10 +176,7 @@ class Signin extends Component {
           <div className="Flex-Container-3">
             <div className="Landing-Page-Section">
               <h3 className="Landing-Page-Heading">Step 3: Enjoy your savings!</h3>
-              <p>
-                Once you make a daily routine out of checking your budget, you'll see where you're spending too much and
-                you'll learn to save!
-              </p>
+              <p>Make a daily routine out of checking your budget, and you'll learn to save!</p>
               <img
                 className="Landing-Page-Icon"
                 alt="see your savings"
