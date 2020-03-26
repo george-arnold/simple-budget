@@ -56,9 +56,14 @@ class AddCategories extends Component {
   render() {
     return (
       <main className="FormContainer">
-        <h2 className="FormTitle">New Categories</h2>
+        <img
+          className="Landing-Page-Icon App-Icon"
+          alt="entry chart"
+          src="https://cdn2.iconfinder.com/data/icons/business-management-158/32/05.Pie_curve-512.png
+                "
+        />
         <form className="Form" onSubmit={this.handleSubmit}>
-          <label>Category Name</label>
+          <label className="Category-Form-Label">Enter Category Name</label>
           <input
             className="Form-Input"
             maxLength="50"
@@ -69,7 +74,7 @@ class AddCategories extends Component {
             value={this.state.name}
             onChange={this.handleNameChange}
           ></input>
-          <input className="Submit" type="submit" value="Add Category"></input>
+          <input className="Submit Submit-Category" type="submit" value="Add Category"></input>
         </form>
       </main>
     );

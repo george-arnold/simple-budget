@@ -6,6 +6,7 @@ export default React.createContext({
   addTransaction: () => {},
   addCategory: () => {},
   deleteTransaction: () => {},
+  deleteCategory: () => {},
   addToTotal: () => {},
   // loadUser: () => {},
   totalCost: ''

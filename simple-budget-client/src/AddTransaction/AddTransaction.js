@@ -13,18 +13,16 @@ class AddTransaction extends Component {
     this.state = {
       venue: '',
       amount: '',
-      comments: '',
       categoryId: ''
     };
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    const { venue, amount, comments, categoryId } = this.state;
+    const { venue, amount, categoryId } = this.state;
     const transaction = {
       venue: venue,
       amount: amount,
-      comments: comments,
       category_id: categoryId
     };
     console.log('transaction put into Post', transaction);
@@ -45,7 +43,6 @@ class AddTransaction extends Component {
         this.setState({
           venue: '',
           amount: '',
-          comments: '',
           categoryId: ''
         });
       });
@@ -61,11 +58,6 @@ class AddTransaction extends Component {
       amount: Number(event.target.value)
     });
   };
-  handleCommentChange = event => {
-    this.setState({
-      comments: event.target.value
-    });
-  };
   handleCategoryChange = event => {
     this.setState({
       categoryId: event.target.value
@@ -75,10 +67,25 @@ class AddTransaction extends Component {
   render() {
     const { categories } = this.context;
     return (
-      <main className="FormContainer">
+      <main className="FormContainer Transaction-Container">
         <h2 className="FormTitle">Transaction Entry</h2>
+        <img
+          className="Landing-Page-Icon App-Icon Transaction-Icon"
+          alt="money"
+          src="https://cdn0.iconfinder.com/data/icons/business-management-line-2/24/cash-512.png"
+        />
+
         <form className="Form" onSubmit={this.handleSubmit}>
-          <select className="CategorySelector" value={this.state.categoryId} onChange={this.handleCategoryChange}>
+          <label htmlFor="category-selector" className="Category-Select-Label">
+            Click below to select a category:
+          </label>
+          <select
+            id="category-selector"
+            name="category-selector"
+            className="CategorySelector"
+            value={this.state.categoryId}
+            onChange={this.handleCategoryChange}
+          >
             <option>Select a category</option>
             {categories.map(category => (
               <option key={category.id} value={category.id}>
@@ -91,6 +98,7 @@ class AddTransaction extends Component {
           <label htmlFor="venue">Where did you spend?</label>
           <input
             maxLength="50"
+            className="Form-Input"
             id="venue"
             type="text"
             name="venue"
@@ -101,27 +109,20 @@ class AddTransaction extends Component {
           <label htmlFor="amount">How much did you spend?</label>
           <input
             id="amount"
+            className="Form-Input"
             type="number"
             name="amount"
             value={this.state.amount}
             onChange={this.handleAmountChange}
           ></input>
 
-          <label htmlFor="comments">Additional Comments</label>
-          <textarea
-            id="comments"
-            name="comments"
-            value={this.state.comments}
-            onChange={this.handleCommentChange}
-          ></textarea>
-
-          <input type="submit" value="Submit"></input>
-          <Categories />
-          <h4>Click here to see your total spending</h4>
-          <Link className="Link" to="/track">
-            SpendingTracker
-          </Link>
+          <input className="Submit Submit-Category" type="submit" value="Add Transaction"></input>
         </form>
+        <Categories />
+        <h4>Click here to see your total spending</h4>
+        <Link className="Link" to="/track">
+          SpendingTracker
+        </Link>
       </main>
     );
   }

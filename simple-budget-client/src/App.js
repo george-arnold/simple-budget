@@ -55,7 +55,11 @@ class App extends Component {
       transactions: this.state.transactions.filter(transaction => transaction.id !== transactionId)
     });
   };
-
+  deleteCategory = categoryId => {
+    this.setState({
+      categories: this.state.categories.filter(category => category.id !== categoryId)
+    });
+  };
   onRouteChange = route => {
     if (route === 'signout') {
       this.setState({
@@ -79,6 +83,7 @@ class App extends Component {
       addTransaction: this.addTransaction,
       addCategory: this.addCategory,
       deleteTransaction: this.deleteTransaction,
+      deleteCategory: this.deleteCategory,
       addToTotal: this.addToTotal,
       // loadUser: this.loadUser,
       totalCost: this.state.transactions.map(transaction => parseFloat(transaction.amount)).reduce((a, b) => a + b, 0)

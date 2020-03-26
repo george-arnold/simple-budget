@@ -4,10 +4,11 @@ import BudgetContext from '../../BudgetContext';
 import config from '../../config';
 import TokenService from '../../token-service';
 import DeleteTransaction from '../../Delete/DeleteTransaction';
+import DeleteCategory from '../../Delete/DeleteCategory';
 
 class Categories extends Component {
   static contextType = BudgetContext;
-
+  /* eslint-disable */
   componentDidMount() {
     const { categories = [] } = this.context;
     categories.length === 0 &&
@@ -37,10 +38,12 @@ class Categories extends Component {
           transactions.map(transaction => this.context.addTransaction(transaction));
         });
   }
+
   render() {
     const { categories = [], transactions = [] } = this.context;
     return (
-      <main className="Categories">
+      <main className="Categories-Display">
+        {/* Find the sum of each category */}
         {categories.map(category => {
           category.total = transactions
             .filter(
@@ -54,7 +57,9 @@ class Categories extends Component {
         {categories.map(category => (
           <ul key={category.id} className="CategoriesList">
             <li className="CategoriesListItem" key={category.id}>
-              {category.name}: ${category.total}
+              {<DeleteCategory id={category.id} />}
+              <span className="Category-Name">{category.name}</span>{' '}
+              <span className="Category-Total">${category.total}</span>
               <ul className="TransactionList">
                 {transactions
                   .filter(
@@ -63,11 +68,12 @@ class Categories extends Component {
                       transaction.categoryId == category.id
                   )
                   .map(transaction => (
-                    <li key={transaction.id}>
-                      <div>
-                        {transaction.venue}: ${transaction.amount}
+                    <li className="Transaction-List-Item" key={transaction.id}>
+                      <span className="Transaction-Span-1">
                         <DeleteTransaction id={transaction.id} />
-                      </div>
+                        {transaction.venue}:
+                      </span>{' '}
+                      <span>${transaction.amount}</span>
                     </li>
                   ))}
               </ul>

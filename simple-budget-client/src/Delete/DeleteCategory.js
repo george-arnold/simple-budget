@@ -6,13 +6,13 @@ import config from '../config';
 import BudgetContext from '../BudgetContext';
 import TokenService from '../token-service';
 
-class DeleteTransaction extends Component {
+class DeleteCategory extends Component {
   static contextType = BudgetContext;
 
-  handleDeleteTransaction = event => {
+  handleDeleteCategory = event => {
     event.preventDefault();
-    const transactionId = this.props.id;
-    fetch(`${config.API_ENDPOINT}/transactions/${transactionId}`, {
+    const categoryId = this.props.id;
+    fetch(`${config.API_ENDPOINT}/categories/${categoryId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
@@ -24,7 +24,7 @@ class DeleteTransaction extends Component {
         return res.json();
       })
       .then(() => {
-        this.context.deleteTransaction(transactionId);
+        this.context.deleteCategory(categoryId);
       })
       .catch(error => {
         console.error({ error });
@@ -33,12 +33,12 @@ class DeleteTransaction extends Component {
   render() {
     return (
       <div>
-        <button className="Trash Transaction-Trash" onClick={this.handleDeleteTransaction}>
-          <FontAwesomeIcon icon={faTrashAlt} />
+        <button className="Trash" onClick={this.handleDeleteCategory}>
+          <FontAwesomeIcon className="Font-Icon-Trash" icon={faTrashAlt} />
         </button>
       </div>
     );
   }
 }
 
-export default DeleteTransaction;
+export default DeleteCategory;

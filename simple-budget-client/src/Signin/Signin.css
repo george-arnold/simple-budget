@@ -83,13 +83,15 @@ button {
 }
 
 .Landing-Page-Section {
-  background-color: grey;
+  background-color: rgb(80, 175, 0);
   font-weight: 600px;
   width: 350px;
   margin: 5px;
   border-radius: 10px;
   height: 250px;
   padding: 10px;
+  border: 1px solid black;
+  box-shadow: 10px;
 }
 
 .Info-Heading {
