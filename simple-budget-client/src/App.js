@@ -23,17 +23,6 @@ class App extends Component {
     };
   }
 
-  // will implement in later edition
-  // loadUser = () => {
-  //   this.setState({
-  //     categories: [],
-  //     // transactions: [],
-  //     // user: {
-  //     //   email: userInfo.email,
-  //     //   joined: userInfo.joined,
-  //     // }
-  // //   });
-  // };
   addTransaction = transaction => {
     this.setState({
       transactions: [...this.state.transactions, transaction]
@@ -51,11 +40,13 @@ class App extends Component {
       transactions: this.state.transactions.filter(transaction => transaction.id !== transactionId)
     });
   };
+
   deleteCategory = categoryId => {
     this.setState({
       categories: this.state.categories.filter(category => category.id !== categoryId)
     });
   };
+  //handles signin & logout to execute necessary actions
   onRouteChange = route => {
     if (route === 'signout') {
       this.setState({
@@ -71,6 +62,7 @@ class App extends Component {
       route: route
     });
   };
+  //sets whether or not the app is in demo-mode
   setDemo = value => {
     this.setState({ demo: value });
   };
@@ -84,7 +76,6 @@ class App extends Component {
       addCategory: this.addCategory,
       deleteTransaction: this.deleteTransaction,
       deleteCategory: this.deleteCategory,
-      // loadUser: this.loadUser,
       totalCost: this.state.transactions.map(transaction => parseFloat(transaction.amount)).reduce((a, b) => a + b, 0)
     };
     const { signedIn, route } = this.state;
