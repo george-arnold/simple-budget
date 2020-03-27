@@ -116,34 +116,34 @@ class AddTransaction extends Component {
             ))}
           </select>
           {categoryIdError.length > 0 && <span className="error">{categoryIdError}</span>}
-
           <label className="Transaction-Label" htmlFor="venue">
             Where did you spend?
           </label>
           <input
             maxLength="50"
-            className="Form-Input"
+            className="Transaction-Input"
             id="venue"
             type="text"
+            placeholder="Pepco"
             name="venue"
             value={this.state.venue}
             onChange={this.handleVenueChange}
           ></input>
           {venueError.length > 0 && <span className="error">{venueError}</span>}
-
           <label className="Transaction-Label" htmlFor="amount">
             How much did you spend?
           </label>
+
           <input
             id="amount"
-            className="Form-Input"
+            placeholder="100.23"
+            className="Transaction-Input"
             type="number"
             name="amount"
             value={this.state.amount}
             onChange={this.handleAmountChange}
           ></input>
           {amountError.length > 0 && <span className="error">{amountError}</span>}
-
           <input className="Submit Submit-Category" type="submit" value="Add Transaction"></input>
         </form>
         <Categories />

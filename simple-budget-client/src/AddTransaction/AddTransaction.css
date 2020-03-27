@@ -38,3 +38,7 @@
 .Transaction-Label {
   margin-top: 20px;
 }
+.Transaction-Input {
+  font-size: 20px;
+  width: 30%;
+}

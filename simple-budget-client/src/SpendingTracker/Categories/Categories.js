@@ -34,6 +34,7 @@ class Categories extends Component {
           return Promise.all([categoriesRes.json(), transactionsRes.json()]);
         })
         .then(([categories, transactions]) => {
+          //does not pull data from db if in demo mode
           if (!this.context.demo) {
             categories.map(category => this.context.addCategory(category));
             transactions.map(transaction => this.context.addTransaction(transaction));

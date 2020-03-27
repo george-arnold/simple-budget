@@ -169,7 +169,7 @@ class Signin extends Component {
           <p className="Register" onClick={() => onRouteChange('register')}>
             Click to create an account?{' '}
           </p>
-          <input onClick={this.handleDemo} className="Submit" value="Use Demo Account"></input>
+          <input onClick={this.handleDemo} className="Submit" type="submit" value="Use Demo Account"></input>
         </section>
         <h2 className="Info-Heading">How Simple Budget Works</h2>
         <section className="Landing-Page-Info">

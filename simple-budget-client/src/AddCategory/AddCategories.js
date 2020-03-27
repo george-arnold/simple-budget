@@ -69,7 +69,7 @@ class AddCategories extends Component {
             type="text"
             name="Category-Input"
             id="Category-Input"
-            placeholder="Bills, Groceries, etc..."
+            placeholder="Bills, etc..."
             value={this.state.name}
             onChange={this.handleNameChange}
           ></input>

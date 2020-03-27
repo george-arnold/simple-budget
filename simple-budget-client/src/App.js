@@ -64,7 +64,34 @@ class App extends Component {
   };
   //sets whether or not the app is in demo-mode
   setDemo = value => {
-    this.setState({ demo: value });
+    this.setState({
+      demo: value,
+      transactions: [
+        {
+          venue: 'Safeway',
+          amount: 100.53,
+          categoryId: 2
+        },
+        {
+          venue: 'Giant',
+          amount: 140.32,
+          categoryId: 2
+        },
+        { venue: 'Pepco', amount: 90.22, categoryId: 1 },
+        { venue: 'Midtown Tavern', amount: 47.34, categoryId: 3 }
+      ],
+      categories: [
+        {
+          id: 1,
+          name: 'Bills'
+        },
+        {
+          id: 2,
+          name: 'Groceries'
+        },
+        { id: 3, name: 'Fun' }
+      ]
+    });
   };
 
   render() {
