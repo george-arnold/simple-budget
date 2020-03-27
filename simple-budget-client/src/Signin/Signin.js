@@ -62,6 +62,7 @@ class Signin extends Component {
       };
     });
   };
+
   handleSubmit = event => {
     event.preventDefault();
     if (!validateForm(this.state.errors) || !(this.state.email && this.state.password)) {

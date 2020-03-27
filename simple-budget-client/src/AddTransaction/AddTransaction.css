@@ -20,7 +20,6 @@
   width: 200px;
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
-  margin-bottom: 15px;
   border: 2px solid black;
 }
 
@@ -31,4 +30,11 @@
 .Transaction-Icon {
   position: absolute;
   top: 450px;
+}
+
+.error {
+  position: relative;
+}
+.Transaction-Label {
+  margin-top: 20px;
 }

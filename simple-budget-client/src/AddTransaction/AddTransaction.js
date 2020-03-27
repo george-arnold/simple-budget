@@ -5,6 +5,7 @@ import config from '../config';
 import Categories from '../SpendingTracker/Categories/Categories';
 import { Link } from 'react-router-dom';
 import TokenService from '../token-service';
+
 class AddTransaction extends Component {
   static contextType = BudgetContext;
 
@@ -13,58 +14,78 @@ class AddTransaction extends Component {
     this.state = {
       venue: '',
       amount: '',
-      categoryId: ''
+      categoryId: '',
+      venueError: '',
+      amountError: '',
+      categoryIdError: ''
     };
   }
 
   handleSubmit = event => {
     event.preventDefault();
     const { venue, amount, categoryId } = this.state;
-    const transaction = {
-      venue: venue,
-      amount: amount,
-      category_id: categoryId
-    };
-    console.log('transaction put into Post', transaction);
-    fetch(`${config.API_ENDPOINT}/transactions`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `basic ${TokenService.getAuthToken()}`
-      },
-      body: JSON.stringify(transaction)
-    })
-      .then(res => {
-        if (!res.ok) return res.json().then(event => Promise.reject(event));
-        return res.json();
+    let valid = true;
+    if (!venue.length > 0) {
+      this.setState({ venueError: 'Enter Location of Spending' });
+      valid = false;
+    }
+    if (!amount > 0) {
+      this.setState({ amountError: 'Enter amount of $$ spent' });
+      valid = false;
+    }
+    if (!categoryId > 0) {
+      this.setState({ categoryIdError: 'Please select a category' });
+      valid = false;
+    }
+    if (!valid) {
+      alert('Please complete the transaction form');
+    } else {
+      const transaction = {
+        venue: venue,
+        amount: amount,
+        category_id: categoryId
+      };
+
+      fetch(`${config.API_ENDPOINT}/transactions`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `basic ${TokenService.getAuthToken()}`
+        },
+        body: JSON.stringify(transaction)
       })
-      .then(json => {
-        this.context.addTransaction(json);
-        this.setState({
-          venue: '',
-          amount: '',
-          categoryId: ''
-        });
-      });
+        .then(res => {
+          if (!res.ok) return res.json().then(event => Promise.reject(event));
+          return res.json();
+        })
+        .then(json => {
+          this.context.addTransaction(json);
+          this.setState({
+            venue: '',
+            amount: '',
+            categoryId: ''
+          });
+        })
+        .catch(res => console.log('error:', res));
+    }
   };
 
   handleVenueChange = event => {
-    this.setState({
-      venue: event.target.value
-    });
+    const { value } = event.target;
+    this.setState({ venue: value });
   };
+
   handleAmountChange = event => {
-    this.setState({
-      amount: Number(event.target.value)
-    });
+    const { value } = event.target;
+    this.setState({ amount: Number(value) });
   };
   handleCategoryChange = event => {
-    this.setState({
-      categoryId: event.target.value
-    });
+    const { value } = event.target;
+    this.setState({ categoryId: value });
   };
 
   render() {
+    const { venueError, amountError, categoryIdError } = this.state;
     const { categories } = this.context;
     return (
       <main className="FormContainer Transaction-Container">
@@ -94,8 +115,11 @@ class AddTransaction extends Component {
               </option>
             ))}
           </select>
+          {categoryIdError.length > 0 && <span className="error">{categoryIdError}</span>}
 
-          <label htmlFor="venue">Where did you spend?</label>
+          <label className="Transaction-Label" htmlFor="venue">
+            Where did you spend?
+          </label>
           <input
             maxLength="50"
             className="Form-Input"
@@ -105,8 +129,11 @@ class AddTransaction extends Component {
             value={this.state.venue}
             onChange={this.handleVenueChange}
           ></input>
+          {venueError.length > 0 && <span className="error">{venueError}</span>}
 
-          <label htmlFor="amount">How much did you spend?</label>
+          <label className="Transaction-Label" htmlFor="amount">
+            How much did you spend?
+          </label>
           <input
             id="amount"
             className="Form-Input"
@@ -115,6 +142,7 @@ class AddTransaction extends Component {
             value={this.state.amount}
             onChange={this.handleAmountChange}
           ></input>
+          {amountError.length > 0 && <span className="error">{amountError}</span>}
 
           <input className="Submit Submit-Category" type="submit" value="Add Transaction"></input>
         </form>
