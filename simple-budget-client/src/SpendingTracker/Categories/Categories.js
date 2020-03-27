@@ -34,8 +34,10 @@ class Categories extends Component {
           return Promise.all([categoriesRes.json(), transactionsRes.json()]);
         })
         .then(([categories, transactions]) => {
-          categories.map(category => this.context.addCategory(category));
-          transactions.map(transaction => this.context.addTransaction(transaction));
+          if (!this.context.demo) {
+            categories.map(category => this.context.addCategory(category));
+            transactions.map(transaction => this.context.addTransaction(transaction));
+          }
         });
   }
 

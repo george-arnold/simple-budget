@@ -18,12 +18,8 @@ class App extends Component {
       route: 'signup',
       signedIn: false,
       categories: [],
-      transactions: []
-      //user: {
-      //   name: '',
-      //   email: '',
-      //   joined: ''
-      // }
+      transactions: [],
+      demo: false
     };
   }
 
@@ -75,9 +71,13 @@ class App extends Component {
       route: route
     });
   };
+  setDemo = value => {
+    this.setState({ demo: value });
+  };
 
   render() {
     const value = {
+      demo: this.state.demo,
       categories: this.state.categories,
       transactions: this.state.transactions,
       addTransaction: this.addTransaction,
@@ -103,7 +103,7 @@ class App extends Component {
           ) : route === 'signup' ? (
             <div>
               <ParticleConfig />
-              <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              <Signin setDemo={this.setDemo} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
             </div>
           ) : (
             <div>

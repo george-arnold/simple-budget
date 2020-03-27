@@ -62,7 +62,31 @@ class Signin extends Component {
       };
     });
   };
-
+  handleDemo = event => {
+    event.preventDefault();
+    alert(' Using a demo account: when you logout all data will be lost');
+    const email = 'demo@gmail.com';
+    const password = 'demopassword1234';
+    TokenService.saveAuthToken(TokenService.makeBasicAuthToken(email, password));
+    const signIn = {
+      email: email,
+      password: password
+    };
+    fetch(`${config.API_ENDPOINT}/signin`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(signIn)
+    })
+      .then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
+      .then(user => {
+        if (user.id) {
+          this.props.onRouteChange('home');
+          this.props.setDemo(true);
+        }
+      });
+  };
   handleSubmit = event => {
     event.preventDefault();
     if (!validateForm(this.state.errors) || !(this.state.email && this.state.password)) {
@@ -83,9 +107,9 @@ class Signin extends Component {
       })
         .then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
         .then(user => {
-          console.log(user);
           if (user.id) {
             this.props.onRouteChange('home');
+            this.props.setDemo(false);
           }
         })
         .catch(res => {
@@ -145,6 +169,7 @@ class Signin extends Component {
           <p className="Register" onClick={() => onRouteChange('register')}>
             Click to create an account?{' '}
           </p>
+          <input onClick={this.handleDemo} className="Submit" value="Use Demo Account"></input>
         </section>
         <h2 className="Info-Heading">How Simple Budget Works</h2>
         <section className="Landing-Page-Info">
