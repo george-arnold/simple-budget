@@ -25,7 +25,6 @@ class AddCategories extends Component {
       name: this.state.name
     };
     if (category.name.length > 0) {
-      console.log(TokenService.getAuthToken());
       fetch(`${config.API_ENDPOINT}/categories`, {
         method: 'POST',
         headers: {

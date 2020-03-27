@@ -84,7 +84,6 @@ class App extends Component {
       addCategory: this.addCategory,
       deleteTransaction: this.deleteTransaction,
       deleteCategory: this.deleteCategory,
-      addToTotal: this.addToTotal,
       // loadUser: this.loadUser,
       totalCost: this.state.transactions.map(transaction => parseFloat(transaction.amount)).reduce((a, b) => a + b, 0)
     };
