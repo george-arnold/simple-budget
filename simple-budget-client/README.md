@@ -17,9 +17,9 @@ https://github.com/george-arnold/simple-budget-api
 
 ## Screenshots
 
-![Sign in Screen](/assets/pic1.png?raw=true 'sign in screen')
-![Sign in screen](/assets/pic2.png?raw=true 'Category and Transaction Entry')
-![Sign in screen](/assets/pic3.png?raw=true 'Category Draft')
+![Sign in Screen](./assets/pic1.png?raw=true 'sign in screen')
+![Category and Transaction Entry](./assets/pic2.png?raw=true 'Category and Transaction Entry')
+![Category Draft](./assets/pic3.png?raw=true 'Category Draft')
 
 ## Available Scripts
 
