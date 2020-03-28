@@ -3,7 +3,6 @@ import './AddTransaction.css';
 import BudgetContext from '../BudgetContext';
 import config from '../config';
 import Categories from '../SpendingTracker/Categories/Categories';
-import { Link } from 'react-router-dom';
 import TokenService from '../token-service';
 
 class AddTransaction extends Component {
@@ -147,10 +146,6 @@ class AddTransaction extends Component {
           <input className="Submit Submit-Category" type="submit" value="Add Transaction"></input>
         </form>
         <Categories />
-        <h4>Click here to see your total spending</h4>
-        <Link className="Link" to="/track">
-          SpendingTracker
-        </Link>
       </main>
     );
   }

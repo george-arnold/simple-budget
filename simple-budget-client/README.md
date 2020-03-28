@@ -1,5 +1,20 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Name of App
+
+Simple Budget
+
+## Project-Live
+
+https://simple-budget.georgearnold88.now.sh/
+
+- Make sure to click "Use Demo Account"
+
+## API
+
+The API, and more information about it, is located at
+https://github.com/george-arnold/simple-budget-api
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,0 +1,13 @@
+.SpendingTracker {
+  background-color: rgb(80, 175, 0);
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  width: 350px;
+}
+
+@media only screen and (min-device-width: 768px) {
+  .SpendingTracker {
+    width: 50%;
+  }
+}

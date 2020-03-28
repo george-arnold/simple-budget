@@ -12,6 +12,8 @@ class SpendingTracker extends Component {
     return (
       <main className="SpendingTracker">
         <h2>Your Spending</h2>
+        <p>Total Amount Spent</p>
+        <h3>${Math.floor(this.context.totalCost * 100) / 100}</h3>
         <div className="Spending-Graph-Container">
           {categories.map(category => {
             category.total = transactions
@@ -26,9 +28,6 @@ class SpendingTracker extends Component {
 
           <SpendingGraph categories={this.context.categories} />
         </div>
-        <p>Total Amount Spent</p>
-        <h3>${Math.floor(this.context.totalCost * 100) / 100}</h3>
-        <Link to="/"> Back to Mainpage</Link>
       </main>
     );
   }

@@ -1,37 +1,30 @@
 import React, { Component } from 'react';
-var CanvasJSReact = require('../assets/canvasjs.react');
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import PieChart from 'react-minimal-pie-chart';
 
 class SpendingGraph extends Component {
   render() {
-    const options = {
-      title: {
-        text: 'Basic Column Chart in React'
-      },
-      data: [
-        {
-          type: 'column',
-          dataPoints: [
-            { label: 'Apple', y: 10 },
-            { label: 'Orange', y: 15 },
-            { label: 'Banana', y: 25 },
-            { label: 'Mango', y: 30 },
-            { label: 'Grape', y: 28 }
-          ]
-        }
-      ]
-    };
-
+    const { categories } = this.props;
+    /* eslint-disable */
+    const colors = ['#8FD5A6', '#329F5B', '#0C8346', '#F0F7EE', '#177E89', '#A1D3B4', '#228E56', '#41959E'];
     return (
       <div>
-        <CanvasJSChart
-          options={options}
-          /* onRef = {ref => this.chart = ref} */
+        <PieChart
+          labelPosition={50}
+          data={categories.map((category, index) => ({
+            title: category.name,
+            value: category.total,
+            color: colors[index]
+          }))}
+          label={({ data, dataIndex }) => data[dataIndex].title + ': ' + Math.round(data[dataIndex].percentage) + '%'}
+          labelStyle={{
+            fill: '#121212',
+            fontFamily: 'Montserrat',
+            fontSize: '4px',
+            fontWeight: 'bold'
+          }}
         />
       </div>
     );
   }
 }
-
-module.exports = SpendingGraph;
+export default SpendingGraph;

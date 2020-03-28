@@ -54,7 +54,7 @@ class AddCategories extends Component {
 
   render() {
     return (
-      <main className="FormContainer">
+      <main className="FormContainer Category-Container">
         <img
           className="Landing-Page-Icon App-Icon"
           alt="entry chart"
@@ -62,9 +62,12 @@ class AddCategories extends Component {
                 "
         />
         <form className="Form" onSubmit={this.handleSubmit}>
-          <label className="Category-Form-Label">Enter Category Name</label>
+          <h2 className="FormTitle">Category Entry</h2>
+          <label className="Category-Entry-Label" htmlFor="Category-Input">
+            Enter a category name
+          </label>
           <input
-            className="Form-Input"
+            className="Form-Input Category-Input"
             maxLength="50"
             type="text"
             name="Category-Input"
@@ -75,6 +78,17 @@ class AddCategories extends Component {
           ></input>
           <input className="Submit Submit-Category" type="submit" value="Add Category"></input>
         </form>
+        <div className="Text-On-Screens-Over-1024px">
+          <h3 className="Landing-Page-Heading">Step 1: Set up your categories</h3>
+          <p>By categorizing your expenses you can easily see where you are over-spending</p>
+          <h3 className="Landing-Page-Heading">Step 2: Add Transactions</h3>
+          <p>
+            Either each time you spend money, or by taking 2 minutes a day, upload your any financial transaction that
+            you want to track
+          </p>
+          <h3 className="Landing-Page-Heading">Step 3: Enjoy your savings!</h3>
+          <p>Make a daily routine out of checking your budget, and you'll learn to save!</p>
+        </div>
       </main>
     );
   }

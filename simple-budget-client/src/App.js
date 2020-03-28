@@ -5,7 +5,7 @@ import SpendingTracker from './SpendingTracker/SpendingTracker';
 import BudgetContext from './BudgetContext';
 import Signin from './Signin/Signin';
 import Register from './Signin/Register';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import './App.css';
 import AddCategories from './AddCategory/AddCategories';
 import ParticleConfig from './ParticleConfig';
@@ -21,6 +21,11 @@ class App extends Component {
       transactions: [],
       demo: false
     };
+  }
+
+  componentDidMount() {
+    //look at local storage, see if logged in, set signedIn=true,
+    // if idle log out
   }
 
   addTransaction = transaction => {
@@ -67,18 +72,10 @@ class App extends Component {
     this.setState({
       demo: value,
       transactions: [
-        {
-          venue: 'Safeway',
-          amount: 100.53,
-          categoryId: 2
-        },
-        {
-          venue: 'Giant',
-          amount: 140.32,
-          categoryId: 2
-        },
-        { venue: 'Pepco', amount: 90.22, categoryId: 1 },
-        { venue: 'Midtown Tavern', amount: 47.34, categoryId: 3 }
+        { id: 1, venue: 'Safeway', amount: 100.53, categoryId: 2 },
+        { id: 2, venue: 'Giant', amount: 140.32, categoryId: 2 },
+        { id: 3, venue: 'Pepco', amount: 90.22, categoryId: 1 },
+        { id: 4, venue: 'Midtown Tavern', amount: 47.34, categoryId: 3 }
       ],
       categories: [
         {
@@ -112,9 +109,21 @@ class App extends Component {
           <Navigation signedIn={signedIn} route={route} onRouteChange={this.onRouteChange} />
           {route === 'home' ? (
             <div className="App-Container">
-              <h1>Simple Budget</h1>
-              <Route exact path="/" component={AddCategories} />
-              <Route exact path="/" component={AddTransaction} />
+              <div className="Heading-Container">
+                <h1>Simple Budget</h1>
+                <div className="Container">
+                  <Link className="Link" to="/">
+                    Add Expenses
+                  </Link>
+                  <Link className="Link" to="/track">
+                    Spending Tracker
+                  </Link>
+                </div>
+              </div>
+              <div className="Category-Transaction-Container">
+                <Route exact path="/" component={AddCategories} />
+                <Route exact path="/" component={AddTransaction} />
+              </div>
               <Route exact path="/track" component={SpendingTracker} />
             </div>
           ) : route === 'signup' ? (
