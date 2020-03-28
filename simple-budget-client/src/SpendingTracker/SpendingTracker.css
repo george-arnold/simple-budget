@@ -11,3 +11,9 @@
     width: 50%;
   }
 }
+
+@media only screen and (max-device-width: 380px) {
+  .SpendingTracker {
+    width: 300px;
+  }
+}

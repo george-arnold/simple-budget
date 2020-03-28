@@ -29,3 +29,10 @@
   font-size: 20px;
   width: 30%;
 }
+
+@media only screen and (max-device-width: 380px) {
+  .Transaction-Icon {
+    position: absolute;
+    top: 575px;
+  }
+}

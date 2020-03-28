@@ -41,7 +41,11 @@ input {
 .Text-On-Screens-Over-1024px {
   display: none;
 }
-
+@media only screen and (max-device-width: 380px) {
+  .FormContainer {
+    width: 300px;
+  }
+}
 @media only screen and (min-device-width: 1024px) {
   .FormContainer {
     width: 475px;
