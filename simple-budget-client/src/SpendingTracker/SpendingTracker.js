@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './SpendingTracker.css';
 import BudgetContext from '../BudgetContext';
-import { Link } from 'react-router-dom';
 import SpendingGraph from './SpendingGraph';
 
 class SpendingTracker extends Component {
