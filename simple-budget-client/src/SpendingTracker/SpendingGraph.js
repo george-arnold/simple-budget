@@ -19,7 +19,7 @@ class SpendingGraph extends Component {
           labelStyle={{
             fill: '#121212',
             fontFamily: 'Montserrat',
-            fontSize: '4px',
+            fontSize: '3px',
             fontWeight: 'bold'
           }}
         />
