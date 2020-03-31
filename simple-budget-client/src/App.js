@@ -109,16 +109,13 @@ class App extends Component {
           <Navigation signedIn={signedIn} route={route} onRouteChange={this.onRouteChange} />
           {route === 'home' ? (
             <div className="App-Container">
-              <div className="Heading-Container">
-                <h1>Simple Budget</h1>
-                <div className="Container">
-                  <Link className="Link" to="/">
-                    Add Expenses
-                  </Link>
-                  <Link className="Link" to="/track">
-                    Spending Tracker
-                  </Link>
-                </div>
+              <div className="Container">
+                <Link className="Link" to="/">
+                  Add Expenses
+                </Link>
+                <Link className="Link" to="/track">
+                  Spending Tracker
+                </Link>
               </div>
               <div className="Category-Transaction-Container">
                 <Route exact path="/" component={AddCategories} />

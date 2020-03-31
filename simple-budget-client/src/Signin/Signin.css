@@ -28,8 +28,8 @@
 
 .Label {
   text-transform: uppercase;
+  color: white;
   font-weight: bold;
-  color: black;
   width: 75%;
   text-align: left;
 }
@@ -74,7 +74,7 @@ button {
   text-transform: uppercase;
   width: 75%;
   margin-left: 10 px;
-  background-color: grey;
+  background-color: #87f38a;
   margin-top: 20px;
   text-align: center;
   border: 1px solid black;
@@ -101,6 +101,7 @@ button {
 .Info-Heading {
   font-size: 30px;
   font-weight: bold;
+  color: black;
 }
 .Landing-Page-Info {
   display: flex;
@@ -115,7 +116,7 @@ button {
 .Landing-Page-Icon {
   width: 100px;
 }
-@media only screen and (min-device-width: 798px) {
+@media only screen and (min-width: 798px) {
   .Landing-Page-Section {
     width: 250px;
   }
@@ -139,7 +140,7 @@ button {
     align-items: flex-end;
   }
 }
-@media only screen and (max-device-width: 380px) {
+@media only screen and (max-width: 380px) {
   .Landing-Page-Section {
     width: 300px;
   }
