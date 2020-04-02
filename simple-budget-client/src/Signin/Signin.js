@@ -144,7 +144,9 @@ class Signin extends Component {
           <h3>Sign In to Get Started</h3>
 
           <form className="Login-Forms">
-            <label className="Label">email</label>
+            <label htmlFor="email-address" className="Label">
+              email
+            </label>
             <input
               className="Sign-Up-Input"
               type="email"
@@ -155,21 +157,38 @@ class Signin extends Component {
             />
             {errors.email.length > 0 && <span className="error">{errors.email}</span>}
 
-            <label className="Label">Password</label>
+            <label htmlFor="pasword-entry" className="Label">
+              Password
+            </label>
             <input
               type="password"
+              id="password-entry"
               className="Sign-Up-Input"
               value={this.state.password}
               onChange={this.handlePassword}
             />
             {errors.password.length > 0 && <span className="error">{errors.password}</span>}
 
-            <input onClick={this.handleSubmit} className="Submit" type="submit" value="submit"></input>
+            <input
+              onClick={this.handleSubmit}
+              className="Submit"
+              id="submit-signin"
+              name="submit-signin"
+              type="submit"
+              value="submit"
+            ></input>
           </form>
           <p className="Register" onClick={() => onRouteChange('register')}>
             Click to create an account?{' '}
           </p>
-          <input onClick={this.handleDemo} className="Submit" type="submit" value="Use Demo Account"></input>
+          <input
+            onClick={this.handleDemo}
+            className="Submit"
+            id="submit-demo"
+            name="submit-demo"
+            type="submit"
+            value="Use Demo Account"
+          ></input>
         </section>
         <h2 className="Info-Heading">How Simple Budget Works</h2>
         <section className="Landing-Page-Info">
