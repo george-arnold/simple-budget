@@ -64,7 +64,7 @@ class Signin extends Component {
   };
   handleDemo = event => {
     event.preventDefault();
-    alert(' Using a demo account: when you logout all data will be lost');
+    alert(' This may take 10-15 seconds to load due to a bug in the server code, the bug is being fixed ASAP');
     const email = 'demo@gmail.com';
     const password = 'demopassword1234';
     TokenService.saveAuthToken(TokenService.makeBasicAuthToken(email, password));
