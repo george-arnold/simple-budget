@@ -79,7 +79,7 @@ button {
   text-align: center;
   border: 1px solid black;
   box-shadow: 2px 2px;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .Submit:hover {
@@ -92,7 +92,7 @@ button {
   width: 350px;
   margin: 5px;
   border-radius: 10px;
-  height: 250px;
+  height: 275px;
   padding: 10px;
   border: 1px solid black;
   box-shadow: 10px;
