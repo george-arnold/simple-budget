@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Signin.css';
 import config from '../config';
 import TokenService from '../token-service';
+import { trackPromise } from 'react-promise-tracker';
 
 const validEmailRegex = RegExp(
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
@@ -71,20 +72,22 @@ class Signin extends Component {
       email: email,
       password: password
     };
-    fetch(`${config.API_ENDPOINT}/signin`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(signIn)
-    })
-      .then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
-      .then(user => {
-        if (user.id) {
-          this.props.onRouteChange('home');
-          this.props.setDemo(true);
-        }
-      });
+    trackPromise(
+      fetch(`${config.API_ENDPOINT}/signin`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(signIn)
+      })
+        .then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()))
+        .then(user => {
+          if (user.id) {
+            this.props.onRouteChange('home');
+            this.props.setDemo(true);
+          }
+        })
+    );
   };
   handleSubmit = event => {
     event.preventDefault();
